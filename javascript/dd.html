@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="main__sample">
+        <div id="sample01" class="sample">
+            <h3>문제 정보</h3>
+            <p>const로 선언된 상수들은 퀴즈의 정보를 저장하는 변수들입니다. 각각의 변수는 다음과 같은 정보를 저장합니다.</p>
+<pre class="line-numbers"><code class="language-js">{
+// 문제 정보
+const infoDate = "2021년 10월";
+const infoType = "정보처리기능사";
+const infoNum = "1";
+const infoQuestion = "CPU의 정보처리 속도 단위 중 초당 100만 개의 연산을 수행한다는 의미의 단위는?";
+const infoAnswer = "MIPS";
+const infoDesc = "LIPS는 초당 1개, KIPS는 초당 1000개, MIPS는 초당 1000000의 연산을 수행하는 것을 의미합니다.";
+}
+</code></pre>
+            <p class="desc">
+                infoDate: 퀴즈의 날짜 정보를 저장하는 문자열 변수입니다.<br>
+                infoType: 퀴즈의 유형을 저장하는 문자열 변수입니다.<br>
+                infoNum: 퀴즈의 번호를 저장하는 문자열 변수입니다.<br>
+                infoQuestion: 퀴즈의 질문 내용을 저장하는 문자열 변수입니다.<br>
+                infoAnswer: 퀴즈의 정답을 저장하는 문자열 변수입니다.<br>
+                infoDesc: 퀴즈의 정답 해설을 저장하는 문자열 변수입니다.
+            </p>
+        </div>
+        <!-- //sample01 -->
+
+        <div id="sample02" class="sample">
+            <h3>선택자</h3>
+            <p>문서 객체를 선택하기 위해 선택자(Selector)를 사용합니다.</p>
+<pre class="line-numbers"><code class="language-js">{
+// 선택자
+const quizWrap = document.querySelector(".quiz__wrap");
+const quizDate = quizWrap.querySelector(".quiz__date");
+const quizType = quizWrap.querySelector(".quiz__type");
+const quizNum = quizWrap.querySelector(".quiz__question em");
+const quizQuestion = quizWrap.querySelector(".quiz__question span");
+const quizAnswer = quizWrap.querySelector(".quiz__answer");
+const quizDesc = quizWrap.querySelector(".quiz__desc");
+const quizConfirm = quizWrap.querySelector(".quiz__confirm");
+const quizInput = quizWrap.querySelector(".quiz__input input");
+const quizAnimation = quizWrap.querySelector(".quiz__animation");
+}
+</code></pre>
+            <p class="desc">
+                각각의 선택자는 퀴즈의 다양한 부분을 가리키고 있습니다. 
+                예를 들어, quizWrap은 퀴즈 영역을 감싸는 요소를 선택하고, 
+                quizDate, quizType, quizNum 등은 퀴즈의 날짜, 유형, 번호 등을 표시하는 요소를 선택합니다.
+            </p>
+        </div>
+        <!-- //sample02 -->
+
+        <div id="sample03" class="sample">
+            <h3>문제 출력</h3>
+            <p>문제 정보를 선택한 요소에 출력합니다.</p>
+<pre class="line-numbers"><code class="language-js">{
+// 문제 출력
+quizDate.innerText = infoDate;
+quizType.innerText = infoType;
+quizNum.innerText = infoNum;
+quizQuestion.innerText = infoQuestion;
+quizAnswer.innerText = infoAnswer;
+quizDesc.innerText = infoDesc;
+}
+</code></pre>
+            <p class="desc">
+                quizDate.innerText에는 infoDate 변수의 값을 할당하여 퀴즈의 날짜를 출력합니다.
+            </p>
+        </div>
+        <!-- //sample03 -->
+
+        <div id="sample04" class="sample">
+            <h3>정답 해설 숨기기</h3>
+            <p>정답과 정답 해설을 처음에는 숨김 처리합니다. </p>
+<pre class="line-numbers"><code class="language-js">{
+// 정답 해설 숨기기
+quizAnswer.classList.add("none");
+quizDesc.classList.add("none");
+}
+</code></pre>
+            <p class="desc">
+                사용자가 정답을 입력하기 전까지 이 정보들을 숨겨두는 역할을 합니다.
+                HTML 클래스 'none'을 추가(.add)하여 CSS 숨김처리 합니다.
+            </p>
+        </div>
+        <!-- //sample04 -->
+
+        <div id="sample05" class="sample">
+            <h3>정답 확인하기</h3>
+            <p>
+                정답 확인 버튼(quizConfirm)에 클릭 이벤트 리스너를 추가합니다. 
+                사용자가 이 버튼을 클릭하면 정답을 확인하는 기능이 동작합니다.
+            </p>
+<pre class="line-numbers"><code class="language-js">{
+// 정답 확인하기
+quizConfirm.addEventListener("click", () => {
+const userAnswer = quizInput.value;
+
+if(infoAnswer == userAnswer){
+quizAnimation.classList.add("like");
+} else {
+quizAnimation.classList.add("dislike");
+}
+quizAnswer.classList.remove("none");
+quizDesc.classList.remove("none");
+quizConfirm.classList.add("none");
+quizInput.classList.add("none");
+});
+}
+</code></pre>
+            <p class="desc">
+                1. 클릭 이벤트 핸들러에서는 사용자가 입력한 답안을 가져와서(quizInput.value) 정답과 비교합니다. 
+                만약 정답과 사용자의 답안이 일치하면, 화면에 좋아요 애니메이션을 표시합니다(quizAnimation.classList.add("like")). 
+                그렇지 않으면 싫어요 애니메이션을 표시합니다(quizAnimation.classList.add("dislike")).<br>
+                2. 정답과 정답 해설을 화면에 표시하고, 정답 확인 버튼과 입력 필드를 숨깁니다. 
+                이렇게 하면 사용자는 정답 확인 후에 다른 질문으로 이동하거나 화면을 클리어할 수 있습니다.
+            </p>
+        </div>
+        <!-- //sample05 -->
+    </div>
+</body>
+</html>

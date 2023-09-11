@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+            width: 100%;
+            border-top: 1px solid #dcdcdc;
+            border-spacing: 0;
+        }
+        table td {
+            border-bottom: 1px solid #dcdcdc;
+        }
+    </style>
+</head>
+<body>
+
+
+<script>
+    // 50칸 테이블(5/10)(1-50)
+    // let table1 = "<table>";
+    // let num = 1;
+
+    // for(let i=1; i<=10; i++){
+    //     table1 += "<tr>";
+            
+    //         for(let j=1; j<=5; j++){
+    //             table1 += "<td>" + num + "</td>";
+    //             num++;
+    //         }
+
+    //     table1 += "</tr>";
+    // }    
+
+    // table1 += "</table>";
+
+    // document.write(table1);
+
+
+
+    // let table = "<table class='table'>";
+    // let num = 2;
+
+    // for(let i=1; i<=10; i++){
+    //     table += "<tr>";
+            
+    //         for(let j=1; j<=5; j++){
+    //             table += "<td>" + num + "</td>";
+    //             num+=2;
+
+    //         }
+
+    //     table += "</tr>";
+    // }
+
+    // table += "</table>";
+
+    // document.write(table);
+
+
+
+    // 09. 테이블 출력하기(5*5 출력하기)
+    {
+        let table = "<table class='table'>";
+        let num = 1;
+        
+        for(let i=1; i<=5; i++){
+            table += "<tr>";
+
+                for(let j=1; j<=5; j++){
+                    table += "<td>" + num + "</td>";
+                    num++;
+                }
+
+            table += "</tr>";
+        }
+
+        table += "</table>";
+
+        document.write(table);
+    }
+
+
+
+    // 10. 테이블 출력하기(5*5 짝수만 나오게 출력하기)
+    {
+        let table = "<table class='table'>";
+        let num = 2;
+        
+        for(let i=1; i<=5; i++){
+            table += "<tr>";
+
+                for(let j=1; j<=5; j++){
+                    table += "<td>" + num + "</td>";
+                    num+=2;
+                }
+
+            table += "</tr>";
+        }
+
+        table += "</table>";
+
+        document.write(table);
+    }
+
+
+    // 11. 테이블 출력하기(10*10 짝수는 빨간색, 홀수는 파란색 출력하기)
+    {
+        let table = "<table class='table'>";
+        let num = 1;
+        
+        for(let i=1; i<=10; i++){
+            table += "<tr>";
+
+                for(let j=1; j<=10; j++){
+                    table += "<td>";
+
+                        if(num % 2 == 0){
+                            table += "<span style='color:red;'>" + num + "</span>";
+                        } else {
+                            table += "<span style='color:blue;'>" + num + "</span>";
+                        }
+                        num++;
+
+                    table += "</td>";
+                }
+
+            table += "</tr>";
+        }
+
+        table += "</table>";
+
+        document.write(table);
+    }
+
+
+    // 07. 1~100까지 합
+    let num = 0;
+    for(let i=1; i<=100; i++){
+        num += i;
+    }
+    console.log(num);
+
+
+
+
+</script>
+</body>
+</html>
