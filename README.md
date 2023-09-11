@@ -12,8 +12,8 @@ https://uuzinn.github.io/webs2024/layout
 
 ## SQL
 데이터베이스 MySQL을 공부합니다.
-https://uuzinn.github.io/webs2024/layout/sql
+https://uuzinn.github.io/webs2024/sql
 
 ## SITE
 웹표준을 준수한 사이트를 제작합니다.
-https://uuzinn.github.io/webs2024/layout/site
+https://uuzinn.github.io/webs2024/site
