@@ -73,6 +73,15 @@
         display: block;
     }
 }
+@media (max-width: 600px){
+    .header__inner {
+        height: 60px;
+    }
+    .header__logo img {
+        width: 110px;
+    }
+}
+
 
 /* slider */
 .slider__inner {
