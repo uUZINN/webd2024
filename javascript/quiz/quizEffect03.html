@@ -110,27 +110,34 @@
 
         // 정답 확인
 
-        quizConfirm.addEventListener("click", () => {
-            let selectedChoice = null;
+        quizConfirm.addEventListener("click", () => {       //정답확인 버튼 클릭 시,
 
-            for(i=0; i<quizSelect.length; i++){
-                if(quizSelect[i].checked){
-                    selectedChoice = quizSelect[i].value;
-                    break;
+            let selectedChoice = null;                      //selectedChoice라는 변수의 초기값을 null로 설정
+
+            for(i=0; i<quizSelect.length; i++){             //quizSelect(input)의 갯수만큼 반복 했을때,
+                if(quizSelect[i].checked){                  //만약 input이 checked되면
+                    selectedChoice = quizSelect[i].value;   //사용자가 체크한(선택한) 항목을 확인하고, 체크된 항목의 값을 selectedChoice에 할당합니다.
+                    break;                                  //사용자가 선택한 답을 찾으면 루프를 종료합니다.
                 }
             }
 
-            if(selectedChoice !== null){
-                if(selectedChoice == quizInfo[0].infoAnswer){
-                    alert("정답입니다.");
-                    quizDesc.classList.remove("none");
-                } else {
-                    alert("오답입니다.");
-                    quizAnswer.classList.remove("none");
-                    quizDesc.classList.remove("none");
+            // selectedChoice가 null이 아닌지 확인하여 사용자가 선택지를 선택했는지를 검증합니다. 
+            // 선택을 하지 않았으면 "보기를 선택하세요!"라는 경고(alert) 메시지가 표시됩니다.
+
+            if(selectedChoice !== null){                        //01-if : 만약 selectedChoice(값이 없다면)가 null이 아닐때(값이 생기면)
+
+                // 사용자가 선택한 답(selectedChoice)와 정답(quizInfo[0].infoAnswer)을 비교하여 정답 여부를 판단합니다. 
+                if(selectedChoice == quizInfo[0].infoAnswer){   //01-1-if : selectedChoice(값이 생긴 것)와 정답값이 같다면,
+                    alert("정답입니다.");                        //정답입니다 확인창 표시
+                    quizDesc.classList.remove("none");          //정답 설명란 표시
+                } else {                                        //01-1-else : 그게 아니라면(selectedChoice(값이 생긴 것)와 정답값이 다르다면)
+                    alert("오답입니다.");                        //오답입니다 확인창 표시
+                    quizAnswer.classList.remove("none");        //정답란 표시
+                    quizDesc.classList.remove("none");          //설명란 표시
                 }
-            } else {
-                alert("보기를 선택하세요!😂");
+
+            } else {                                            //01-else : selectedChoice(값이 없다면)가 null일때(값이 여전히 없으면)
+                alert("보기를 선택하세요!😂");                   //보기를 선택하세요 확인창 표시
             }
         });
 

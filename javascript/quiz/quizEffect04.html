@@ -122,7 +122,7 @@
         };
 
         // 정답 확인
-        const answerQuiz = (index) => {
+        const answerQuiz = (index) => { 
             const quizChoices = quizWrap.querySelectorAll(`.quiz__choice input[name="choice-${index}"]:checked`);
             const quizElement = quizWrap.querySelectorAll(".quiz")[index];
             const answerElement = quizWrap.querySelectorAll(".quiz__answer")[index];
