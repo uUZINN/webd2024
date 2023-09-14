@@ -130,26 +130,42 @@
         // 정답 확인
         const checkAnswer = () => {
             const selectedChoice = quizWrap.querySelector("input[name='choice']:checked");
-            const userAnswer = selectedChoice ? selectedChoice.value : null; // 사용자가 클릭한 정답
+
+            if (!selectedChoice) {
+                alert("답을 선택하세요.");
+                quizNext.classList.add("none");  // 다음 버튼 삭제
+                quizConfirm.classList.remove("none");  // 정답 버튼 추가 
+                return;
+            }
+
+            // const userAnswer = selectedChoice ? selectedChoice.value : null;
+            const userAnswer = selectedChoice.value; // 사용자가 클릭한 정답
             const correctAnswer = quizInfo[currentIndex].infoAnswer;    // 정답지의 정답
             const quizElement = quizWrap.querySelector(".quiz");
             const descElement = quizWrap.querySelector(".quiz__desc");
             const answerElement = quizWrap.querySelector(".quiz__answer");
 
-            if (userAnswer !== null){
-                if(userAnswer === correctAnswer){
-                    quizElement.classList.add("good");
-                } else {
-                    quizElement.classList.add("bad");
-                    answerElement.classList.remove("none");
-                }
-                descElement.classList.remove("none");    
+            if(userAnswer === correctAnswer){
+                quizElement.classList.add("good");
             } else {
-                alert("보기를 선택하세요.");
-                quizNext.classList.add("none");  // 다음 버튼 삭제
-                quizConfirm.classList.remove("none");  // 정답 버튼 추가
+                quizElement.classList.add("bad");
+                answerElement.classList.remove("none");
             }
-            
+            descElement.classList.remove("none");    
+
+            // if (userAnswer !== null){
+            //     if(userAnswer === correctAnswer){
+            //         quizElement.classList.add("good");
+            //     } else {
+            //         quizElement.classList.add("bad");
+            //         answerElement.classList.remove("none");
+            //     }
+            //     descElement.classList.remove("none");    
+            // } else {
+            //     alert("보기를 선택하세요.");
+            //     quizNext.classList.add("none");  // 다음 버튼 삭제
+            //     quizConfirm.classList.remove("none");  // 정답 버튼 추가
+            // }
         }
         
         // 페이지가 로드된 후 실행
