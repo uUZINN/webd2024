@@ -56,18 +56,44 @@
 
 
     <script>
-        const quizInfo = () => {
+        // 선택자
+        const quizWrap = document.querySelector(".quiz__wrap");
+
+        // 문제 데이터
+        const quizInfo = [];
+
+        // 문제 가져오기
+        const fetchQuiz = () => {
             fetch("https://uuzinn.github.io/webs2024/json/gineungsaJC2011_05.json")
                 .then(res => res.json())
                 .then(items => {
                     console.log(items[0].question);
+                    quizInfo[0] = items[0].question;
+                    quizInfo[1] = items[0].desc;
+                    console.log(quizInfo);
+
+                    updataQuiz();   
                 })
                 .catch((error) => console.log(error));
         }
 
+        // 문제 출력하기
+        const updataQuiz = () => {
+            let quizWrapTag = `
+                <div class="quiz">
+                    <div class="quiz__header">정보처리기능사</div>
+                    <div class="quiz__main">
+                        <div class="quiz__question">${quizInfo[0]}</div>
+                        <div class="quiz__desc">${quizInfo[1]}</div>
+                    </div>
+                </div>
+            `;
+            quizWrap.innerHTML = quizWrapTag;
+        }
+
         // 페이지가 로드된 후 실행
         document.addEventListener("DOMContentLoaded", () => {
-            quizInfo();
+            fetchQuiz();
         });
     </script>
 </body>
