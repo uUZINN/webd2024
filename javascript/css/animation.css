@@ -853,6 +853,7 @@ body {
     position: absolute;
     opacity: 0;
     pointer-events: none;
+    display: none;
 }
 
 @-webkit-keyframes tailWiggle {
