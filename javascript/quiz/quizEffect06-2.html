@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="assets/css/quiz.css">
     <link rel="stylesheet" href="../../assets/css/default.min.css">
 </head>
-<body class="fixed">
+<body>
     <header id="header">
         <h1><a href="../index.html">Quiz</a></h1>
         <nav>
@@ -214,39 +214,43 @@ document.addEventListener("DOMContentLoaded", () => {
         const quizWrap = document.querySelector(".quiz__wrap");
         const quizCheck = document.querySelector(".quiz__check");
 
-        // 문제 정보
-        let quizInfo = [];
-        let quizScore = 0;
+        // 변수 설정
+        let currentIndex = 0;   // 현재 문제
+        let quizInfo = [];      // 모든 퀴즈 정보
 
         // 문제 가져오기
         const fetchQuiz = () => {
             fetch("https://uuzinn.github.io/webs2024/json/gineungsaJC2011_05.json")
-            .then(res => res.json())
-            .then(items => {
-                quizInfo = items.map((item, index) => {
-                    const formattedQuiz = {
-                        infoDate: "2011년 5회",
-                        infoType: item.subject,
-                        infoQuestion: item.question,
-                        infoDesc: item.desc,
-                        infoAnswer: item.correct_answer
-                    }
-                    // 보기 가져오기
-                    const choices = [...item.incorrect_answers, item.correct_answer];
+                .then(res => res.json())
+                .then(items => {
+                    quizInfo = items.map((item, index) => {
+                        const formattedQuiz = {
+                            infoDate: "2011년 5회",
+                            infoType: item.subject,
+                            infoQuestion: item.question,
+                            infoDesc: item.desc,
+                            infoAnswer: item.correct_answer
+                        }
 
-                    // 보기 랜덤 섞기
-                    for (let i = choices.length - 1; i > 0; i--) {
-                        const j = Math.floor(Math.random() * (i + 1));
-                        [choices[i], choices[j]] = [choices[j], choices[i]];
-                    }
+                        // 보기 가져오기
+                        const choices = [...item.incorrect_answers, item.correct_answer];
 
-                    formattedQuiz.infoChoice = choices;
-                    return formattedQuiz;
-                });
-                console.log(quizInfo);
-                updataQuiz();
-            })
+                        // 보기 랜덤 섞기
+                        for (let i = choices.length - 1; i > 0; i--) {
+                            const j = Math.floor(Math.random() * (i + 1));
+                            [choices[i], choices[j]] = [choices[j], choices[i]];
+                        }
+
+
+                        formattedQuiz.infoChoice = choices;
+                        return formattedQuiz;
+                    });
+
+                    console.log(quizInfo);
+                    updataQuiz();
+                })
         }
+
 
         // 문제 출력
         const updataQuiz = () => {
@@ -260,19 +264,19 @@ document.addEventListener("DOMContentLoaded", () => {
                             <div class="quiz__question">${number+1}. ${quiz.infoQuestion}</div>
                             <div class="quiz__choice">
                                 <label for="choice1-${number}">
-                                    <input type="radio" id="choice1-${number}" name="choice-${number}" value="${quiz.infoChoice[0]}">
+                                    <input type="radio" id="choice1-${number}" name="choice-${number}" value="1">
                                     <span>${quiz.infoChoice[0]}</span>
                                 </label>
                                 <label for="choice2-${number}">
-                                    <input type="radio" id="choice2-${number}" name="choice-${number}" value="${quiz.infoChoice[1]}">
+                                    <input type="radio" id="choice2-${number}" name="choice-${number}" value="2">
                                     <span>${quiz.infoChoice[1]}</span>
                                 </label>
                                 <label for="choice3-${number}">
-                                    <input type="radio" id="choice3-${number}" name="choice-${number}" value="${quiz.infoChoice[2]}">
+                                    <input type="radio" id="choice3-${number}" name="choice-${number}" value="3">
                                     <span>${quiz.infoChoice[2]}</span>
                                 </label>
                                 <label for="choice4-${number}">
-                                    <input type="radio" id="choice4-${number}" name="choice-${number}" value="${quiz.infoChoice[3]}">
+                                    <input type="radio" id="choice4-${number}" name="choice-${number}" value="4">
                                     <span>${quiz.infoChoice[3]}</span>
                                 </label>
                             </div>
@@ -289,37 +293,34 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // 정답 확인
         quizCheck.addEventListener("click", () => {
-            const quizElements = document.querySelectorAll(".quiz");
+            const selectedChoice = quizWrap.querySelector("input[name='choice-${number}']:checked");
+            const userAnswer = selectedChoice.value;
+            const correctAnswer = quizInfo[currentIndex].infoAnswer;
+            const quizElement = quizWrap.querySelector(".quiz");
+            const descElement = quizWrap.querySelector(".quiz__desc");
+            const answerElement = quizWrap.querySelector(".quiz__answer");
 
-            quizElements.forEach((quizElement, index) => {
-                const selectedChoice = quizElement.querySelector(`input[name="choice-${index}"]:checked`);  //체크한 정답
-                const quizAnswer = quizElement.querySelector(".quiz__answer");
-                const quizDesc = quizElement.querySelector(".quiz__desc");
-
-                if(selectedChoice){
-                    const userAnswer = selectedChoice.value;
-                    const correctAnswer = quizAnswer.textContent;
-
-                    if(userAnswer === correctAnswer){
-                        console.log("정답입니다.");
-                        quizElement.classList.add("good");
-                        quizScore++;
-                        quizDesc.classList.add("none");
-                    } else {
-                        console.log("오답입니다.");
-                        quizElement.classList.add("bad");
-                        quizAnswer.classList.remove("none");
-                        quizDesc.classList.remove("none");
-                    }
+            if(userAnswer === correctAnswer){
+                if (!selectedChoice) {
+                    quizElement.classList.add("bad");
+                    answerElement.classList.remove("none");
                 }
-            });
-            alert("총 맟힌 갯수는 : " + quizScore);
+                quizElement.classList.add("good");
+            } else {
+                quizElement.classList.add("bad");
+                answerElement.classList.remove("none");
+            }
+            descElement.classList.remove("none");
+
         });
+
 
         // 페이지가 로드된 후 실행
         document.addEventListener("DOMContentLoaded", () => {
             fetchQuiz();
         });
+
+        
     </script>
 </body>
 </html>
