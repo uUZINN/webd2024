@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>퀴즈 이펙트 - 주관식</title>
+
+    <link rel="stylesheet" href="assets/css/quiz.css">
+    <link rel="stylesheet" href="../../assets/css/default.min.css">
+    <style>
+        .quiz__choice label input {
+            position: static;
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #008be7;
+            border-radius: 3px;
+            height: auto;
+            margin: 0;
+        }
+        .quiz__question__desc {
+            width: 100%;
+            padding: 20px;
+            border-radius: 3px;
+            background-color: #f7f7f7;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body class="fixed">
+    <header id="header">
+        <h1><a href="../index.html">Quiz</a></h1>
+        <nav>
+            <!-- <ul>
+                <li><a href="quizEffect01.html">1</a></li>
+                <li><a href="quizEffect02.html">2</a></li>
+                <li><a href="quizEffect03.html">3</a></li>
+                <li><a href="quizEffect04.html">4</a></li>
+                <li><a href="quizEffect05.html">5</a></li>
+                <li class="active"><a href="quizEffect06.html">6</a></li>
+                <li><a href="quizEffect07.html">7</a></li>
+            </ul> -->
+        </nav>
+    </header>
+    <!-- //header -->
+
+    <main id="main">
+        <div class="quiz__wrap"></div>
+        <div class="quiz__check">정답 확인</div>
+    </main>
+    <!-- //main -->
+
+    <footer id="footer">
+        <a href="mailto:dbwls9038@naver.com">dbwls9038@naver.com</a>
+    </footer>
+    <!-- //footer -->
+
+    <script src="../../assets/js/highlight.min.js"></script>
+    <script src="assets/js/common.js"></script>
+    <script>
+        // 선택자
+        const quizWrap = document.querySelector(".quiz__wrap");
+        const quizCheck = document.querySelector(".quiz__check");
+
+        // 문제 정보
+        let quizInfo = [];
+        let quizScore = 0;
+
+        // 문제 가져오기
+        const fetchQuiz = () => {
+            fetch("https://uuzinn.github.io/webs2024/json/gineungsaShort.json")
+            .then(res => res.json())
+            .then(items => {
+                quizInfo = items.map((item, index) => {
+                    const formattedQuiz = {
+                        infoDate: item.time,
+                        infoType: "정보처리",
+                        infoQuestion: item.question,
+                        infoDesc: item.question_desc,
+                        infoAnswer: item.correct_answer
+                    }
+                    // // 보기 가져오기
+                    // const choices = [...item.incorrect_answers, item.correct_answer];
+
+                    // // 보기 랜덤 섞기
+                    // for (let i = choices.length - 1; i > 0; i--) {
+                    //     const j = Math.floor(Math.random() * (i + 1));
+                    //     [choices[i], choices[j]] = [choices[j], choices[i]];
+                    // }
+
+                    // formattedQuiz.infoChoice = choices;
+                    return formattedQuiz;
+                });
+                console.log(quizInfo);
+                updataQuiz();
+            })
+        }
+
+        // 문제 출력
+        const updataQuiz = () => {
+            const quizArray = [];
+
+            quizInfo.forEach((quiz, number) => {
+                quizArray.push(`
+                    <div class="quiz">
+                        <div class="quiz__header">${quiz.infoType}${quiz.infoDate}</div>
+                        <div class="quiz__main">
+                            <div class="quiz__question">${number+1}. ${quiz.infoQuestion}</div>
+                            ${quiz.infoDesc ? `<div class="quiz__question__desc">${quiz.infoDesc}</div>` : ''}
+                            <div class="quiz__choice">
+                                <label for="answer">
+                                    <input type="text" id="answer" name="answer" placeholder="정답을 입력해주세요!">
+                                </label>
+                            </div>
+                            <div class="quiz__answer none">${quiz.infoAnswer}</div>
+                        </div>
+                    </div>
+                `);
+            })
+
+            quizWrap.innerHTML = quizArray.join("");
+        }
+
+
+        // 정답 확인
+        quizCheck.addEventListener("click", () => {
+            const quizElements = document.querySelectorAll(".quiz");
+
+            quizElements.forEach((quizElement, index) => {
+                const selectedChoice = quizElement.querySelector("input");  //체크한 정답
+                const quizAnswer = quizElement.querySelector(".quiz__answer");
+
+                if(selectedChoice){
+                    const userAnswer = selectedChoice.value.trim().toLowerCase();
+                    const correctAnswer = quizAnswer.textContent.trim().toLowerCase();
+
+                    if(userAnswer === correctAnswer){
+                        console.log("정답입니다.");
+                        quizElement.classList.add("good");
+                        quizScore++;
+                    } else {
+                        console.log("오답입니다.");
+                        quizElement.classList.add("bad");
+                        quizAnswer.classList.remove("none");
+                    }
+                }
+            })
+            alert("총 맟힌 갯수는 : " + quizScore);
+        });
+
+        // 페이지가 로드된 후 실행
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchQuiz();
+        });
+    </script>
+</body>
+</html>
