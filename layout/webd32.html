@@ -199,12 +199,12 @@
             setInterval(() => {
                 currentIndex++;
                 sliderWrap.style.transition = "all 0.6s";
-                sliderWrap.style.marginTop = -currentIndex * 100 + "vh";
+                sliderWrap.style.transform = `translateY(-${currentIndex * 100}vh)`;
 
                 if(currentIndex == slider.length){
                     setTimeout(() => {
                         sliderWrap.style.transition = "0s";
-                        sliderWrap.style.marginTop = "0";
+                        sliderWrap.style.transform = `translateY(0)`;
                         currentIndex = 0;
                     }, 700);
                 }
