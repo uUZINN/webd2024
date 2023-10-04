@@ -46,7 +46,7 @@
 
     <main id="main">
         <div class="quiz__wrap"></div>
-        <div class="quiz__check">정답 확인</div>
+        
     </main>
     <!-- //main -->
 
@@ -58,100 +58,103 @@
     <script src="../../assets/js/highlight.min.js"></script>
     <script src="assets/js/common.js"></script>
     <script>
-        // 선택자
-        const quizWrap = document.querySelector(".quiz__wrap");
-        const quizCheck = document.querySelector(".quiz__check");
+    // 선택자
+    const quizWrap = document.querySelector(".quiz__wrap");
+    const confirmButton = document.querySelector(".quiz__confirm");
+    const nextButton = document.querySelector(".quiz__next");
 
-        // 문제 정보
-        let quizInfo = [];
-        let quizScore = 0;
+    // 문제 정보
+    let quizInfo = [];
+    let currentQuizIndex = 0; // 현재 퀴즈의 인덱스
+    let quizScore = 0;
 
-        // 문제 가져오기
-        const fetchQuiz = () => {
-            fetch("https://uuzinn.github.io/webs2024/json/gineungsaShort.json")
+    // 문제 가져오기
+    const fetchQuiz = () => {
+        fetch("https://uuzinn.github.io/webs2024/json/gineungsaShort.json")
             .then(res => res.json())
             .then(items => {
-                quizInfo = items.map((item, index) => {
-                    const formattedQuiz = {
+                quizInfo = items.map(item => {
+                    return {
                         infoDate: item.time,
                         infoType: "정보처리",
                         infoQuestion: item.question,
                         infoDesc: item.question_desc,
-                        infoAnswer: item.correct_answer
-                    }
-                    // // 보기 가져오기
-                    // const choices = [...item.incorrect_answers, item.correct_answer];
-
-                    // // 보기 랜덤 섞기
-                    // for (let i = choices.length - 1; i > 0; i--) {
-                    //     const j = Math.floor(Math.random() * (i + 1));
-                    //     [choices[i], choices[j]] = [choices[j], choices[i]];
-                    // }
-
-                    // formattedQuiz.infoChoice = choices;
-                    return formattedQuiz;
+                        infoAnswer: item.correct_answer,
+                    };
                 });
                 console.log(quizInfo);
-                updataQuiz();
-            })
-        }
+                showQuiz(currentQuizIndex); // 첫 번째 문제를 표시
+            });
+    };
 
-        // 문제 출력
-        const updataQuiz = () => {
-            const quizArray = [];
-
-            quizInfo.forEach((quiz, number) => {
-                quizArray.push(`
-                    <div class="quiz">
-                        <div class="quiz__header">${quiz.infoType}${quiz.infoDate}</div>
-                        <div class="quiz__main">
-                            <div class="quiz__question">${number+1}. ${quiz.infoQuestion}</div>
-                            ${quiz.infoDesc ? `<div class="quiz__question__desc">${quiz.infoDesc}</div>` : ''}
-                            <div class="quiz__choice">
-                                <label for="answer">
-                                    <input type="text" id="answer" name="answer" placeholder="정답을 입력해주세요!">
-                                </label>
-                            </div>
-                            <div class="quiz__answer none">${quiz.infoAnswer}</div>
+    // 문제 출력
+    const showQuiz = (index) => {
+        if (index >= 0 && index < quizInfo.length) {
+            const quiz = quizInfo[index];
+            const quizHtml = `
+                <div class="quiz">
+                    <div class="quiz__header">${quiz.infoType}${quiz.infoDate}</div>
+                    <div class="quiz__main">
+                        <div class="quiz__question">${index + 1}. ${quiz.infoQuestion}</div>
+                        ${quiz.infoDesc ? `<div class="quiz__question__desc">${quiz.infoDesc}</div>` : ''}
+                        <div class="quiz__choice">
+                            <label for="answer">
+                                <input type="text" id="answer" name="answer" placeholder="정답을 입력해주세요!">
+                            </label>
+                        </div>
+                        <div class="quiz__answer none">${quiz.infoAnswer}</div>
+                        <div class="quiz__footer">
+                            <button class="quiz__confirm">정답 확인하기</button>
+                            <button class="quiz__next none">다음 문제</button>
                         </div>
                     </div>
-                `);
-            })
+                </div>
+            `;
+            quizWrap.innerHTML = quizHtml;
 
-            quizWrap.innerHTML = quizArray.join("");
+            const confirmButton = document.querySelector(".quiz__confirm");
+            const nextButton = document.querySelector(".quiz__next");
+
+            confirmButton.addEventListener("click", () => {
+                checkAnswer(); // 정답 확인
+                nextButton.classList.remove("none");
+                confirmButton.classList.add("none");
+            });
+
+            nextButton.addEventListener("click", () => {
+                currentQuizIndex++; // 다음 문제 인덱스로 이동
+                showQuiz(currentQuizIndex); // 다음 문제 표시
+            });
+
+        } else {
+            // 모든 문제가 완료되었을 때 처리 (예를 들어, 모든 문제를 푼 후에 메시지를 표시하거나 결과를 표시할 수 있음)
+            alert("모든 문제를 푸셨습니다. 총 맞힌 갯수는 : " + quizScore);
         }
+    };
 
+    // 정답 확인
+    const checkAnswer = () => {
+        const selectedChoice = document.querySelector("input"); // 체크한 정답
+        const quizAnswer = document.querySelector(".quiz__answer");
+        const quizElement = quizWrap.querySelector(".quiz");
 
-        // 정답 확인
-        quizCheck.addEventListener("click", () => {
-            const quizElements = document.querySelectorAll(".quiz");
+        if (selectedChoice) {
+            const userAnswer = selectedChoice.value.trim().toLowerCase();
+            const correctAnswer = quizAnswer.textContent.trim().toLowerCase();
 
-            quizElements.forEach((quizElement, index) => {
-                const selectedChoice = quizElement.querySelector("input");  //체크한 정답
-                const quizAnswer = quizElement.querySelector(".quiz__answer");
+            if(userAnswer === correctAnswer){
+                quizElement.classList.add("good");
+            } else {
+                quizElement.classList.add("bad");
+                quizAnswer.classList.remove("none");
+            }
+        }
+    };
 
-                if(selectedChoice){
-                    const userAnswer = selectedChoice.value.trim().toLowerCase();
-                    const correctAnswer = quizAnswer.textContent.trim().toLowerCase();
-
-                    if(userAnswer === correctAnswer){
-                        console.log("정답입니다.");
-                        quizElement.classList.add("good");
-                        quizScore++;
-                    } else {
-                        console.log("오답입니다.");
-                        quizElement.classList.add("bad");
-                        quizAnswer.classList.remove("none");
-                    }
-                }
-            })
-            alert("총 맟힌 갯수는 : " + quizScore);
-        });
-
-        // 페이지가 로드된 후 실행
-        document.addEventListener("DOMContentLoaded", () => {
-            fetchQuiz();
-        });
+    // 페이지가 로드된 후 실행
+    document.addEventListener("DOMContentLoaded", () => {
+        fetchQuiz();
+    });
     </script>
 </body>
 </html>
