@@ -1,5 +1,6 @@
 body {
-    background-color: #1976DE;
+    /* background-color: #1976DE; */
+    background-image: url(img/d.png);
     position: relative;
     height: 100vh;
 }
