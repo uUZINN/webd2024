@@ -1110,7 +1110,150 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample23 -->
+                <!-- //sample24 -->
+
+                <div id="sample25" class="sample">
+                    <h3>25. 함수 : 비동기 함수 : 프로미스</h3>
+                    <p>
+                        프로미스(Promise)는 비동기 작업의 결과 또는 실패를 나타내는 객체입니다.
+                    </p>
+<pre><code class="language-js">{
+    let data = true;
+
+    const func = new Promise((resolve, reject) => {
+        if(data){
+            resolve("45. 함수가 실행되었습니다.");
+        } else {
+            reject("45. 함수가 실행되지 않았습니다.")
+        }
+    });
+
+    func
+        .then(
+            result => console.log(result)
+        )
+        .catch (
+            error => console.log(error)
+        )
+
+    // 콜백지옥 -- 프로미스
+    function funcA(){
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                console.log("funcA가 실행되었습니다.");
+                resolve();
+            }, 1000);
+        })
+    }
+    function funcB(){
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                console.log("funcB가 실행되었습니다.");
+                resolve();
+            }, 1000);
+        })
+    }
+    function funcC(){
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                console.log("funcC가 실행되었습니다.");
+                resolve();
+            }, 1000);
+        })
+    }
+    function funcD(){
+        return new Promise((resolve) => {
+            setTimeout(() => {
+                console.log("funcD가 실행되었습니다.");
+                resolve();
+            }, 1000);
+        })
+    }
+    funcA()
+        .then(funcB)
+        .then(funcC)
+        .then(funcD)
+        .catch((error) => {
+            console.log(error)
+        })
+}
+</code></pre>
+                    <p class="desc">
+                        1. 비동기 작업의 성공 또는 실패 여부를 나타냅니다.<br>
+                        2. 성공한 경우, 작업의 결과를 저장합니다.<br>
+                        3. 실패한 경우, 오류 정보를 저장합니다.<br>
+                        4. 연속적인 비동기 작업을 순차적으로 실행하거나 병렬로 실행할 수 있습니다.
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                45. 함수가 실행되었습니다.<br>
+                                funcA가 실행되었습니다.<br>
+                                funcB가 실행되었습니다.<br>
+                                funcC가 실행되었습니다.<br>
+                                funcD가 실행되었습니다.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample25 -->
+
+                <div id="sample26" class="sample">
+                    <h3>26. 함수 : 비동기 함수 : asyne/await</h3>
+                    <p>
+                        async/await는 JavaScript에서 비동기 작업을 보다 간결하고 읽기 쉬운 형태로 다루는 데 사용되는 문법입니다.
+                    </p>
+<pre><code class="language-js">{
+    // 01
+    function func(){
+        console.log("46. 함수가 실행되었습니다.");
+    }
+    func();
+
+    // 02
+    async function func2(){
+        console.log("47. 함수가 실행되었습니다.");
+    }
+    func2();
+
+    // 03
+    async function func3(){
+        const result = await fetch("https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json")
+        const data = await result.json();
+        console.log(data)
+    }
+    func3();
+
+    // 04
+    async function func4(){
+        try {
+            const result = await fetch("https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json")
+            const data = await result.json();
+            console.log(data);
+        } catch (error){
+            console.log(error);
+        }
+    }
+    func4();
+}
+</code></pre>
+                    <p class="desc">
+                        1. async 함수: async 키워드를 함수 앞에 사용하여 해당 함수가 비동기 함수임을 선언합니다. 이렇게 선언된 함수는 항상 Promise를 반환합니다.<br>
+                        2. await 표현식: await는 비동기 함수 내에서만 사용할 수 있으며, Promise가 처리될 때까지 실행을 일시 중단하고 해당 Promise의 결과를 반환합니다.<br>
+                        await 표현식을 사용하면 비동기 코드를 동기적으로 작성하는 것과 같은 느낌을 가질 수 있습니다.
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                46. 함수가 실행되었습니다.<br>
+                                47. 함수가 실행되었습니다.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample26 -->
             </div>
             <!-- //main__sample -->
         </main>
@@ -1284,66 +1427,66 @@
         }
 
         // 25. 함수 : 비동기 함수 : 프로미스
-        {
-            // let data = true;
+        // {
+        //     let data = true;
 
-            // const func = new Promise((resolve, reject) => {
-            //     if(data){
-            //         resolve("45. 함수가 실행되었습니다.");
-            //     } else {
-            //         reject("45. 함수가 실행되지 않았습니다.")
-            //     }
-            // });
+        //     const func = new Promise((resolve, reject) => {
+        //         if(data){
+        //             resolve("45. 함수가 실행되었습니다.");
+        //         } else {
+        //             reject("45. 함수가 실행되지 않았습니다.")
+        //         }
+        //     });
 
-            // func
-            //     .then(
-            //         result => console.log(result)
-            //     )
-            //     .catch (
-            //         error => console.log(error)
-            //     )
+        //     func
+        //         .then(
+        //             result => console.log(result)
+        //         )
+        //         .catch (
+        //             error => console.log(error)
+        //         )
 
-            // 콜백지옥 --> 프로미스
-            // function funcA(){
-            //     return new Promise((resolve) => {
-            //         setTimeout(() => {
-            //             console.log("funcA가 실행되었습니다.");
-            //             resolve();
-            //         }, 1000);
-            //     })
-            // }
-            // function funcB(){
-            //     return new Promise((resolve) => {
-            //         setTimeout(() => {
-            //             console.log("funcB가 실행되었습니다.");
-            //             resolve();
-            //         }, 1000);
-            //     })
-            // }
-            // function funcC(){
-            //     return new Promise((resolve) => {
-            //         setTimeout(() => {
-            //             console.log("funcC가 실행되었습니다.");
-            //             resolve();
-            //         }, 1000);
-            //     })
-            // }
-            // function funcD(){
-            //     return new Promise((resolve) => {
-            //         setTimeout(() => {
-            //             console.log("funcD가 실행되었습니다.");
-            //             resolve();
-            //         }, 1000);
-            //     })
-            // }
-            // funcA()
-            //     .then(funcB)
-            //     .then(funcC)
-            //     .then(funcD)
-            //     .catch((error) => {
-            //         console.log(error)
-            //     })
-        }
+        //     콜백지옥 --> 프로미스
+        //     function funcA(){
+        //         return new Promise((resolve) => {
+        //             setTimeout(() => {
+        //                 console.log("funcA가 실행되었습니다.");
+        //                 resolve();
+        //             }, 1000);
+        //         })
+        //     }
+        //     function funcB(){
+        //         return new Promise((resolve) => {
+        //             setTimeout(() => {
+        //                 console.log("funcB가 실행되었습니다.");
+        //                 resolve();
+        //             }, 1000);
+        //         })
+        //     }
+        //     function funcC(){
+        //         return new Promise((resolve) => {
+        //             setTimeout(() => {
+        //                 console.log("funcC가 실행되었습니다.");
+        //                 resolve();
+        //             }, 1000);
+        //         })
+        //     }
+        //     function funcD(){
+        //         return new Promise((resolve) => {
+        //             setTimeout(() => {
+        //                 console.log("funcD가 실행되었습니다.");
+        //                 resolve();
+        //             }, 1000);
+        //         })
+        //     }
+        //     funcA()
+        //         .then(funcB)
+        //         .then(funcC)
+        //         .then(funcD)
+        //         .catch((error) => {
+        //             console.log(error)
+        //         })
+        // }
 
         // 26. 함수 : 비동기 함수 : asyne/await
         {
