@@ -53,7 +53,7 @@ header a {
 .box h4 {
     display: block;
     font-size: 1.3rem;
-    padding: 8px 30px;
+    padding: 12px 30px;
     margin-bottom: 20px;
     border-radius: 50px;
     background: #1976DE;
@@ -62,7 +62,7 @@ header a {
     text-align: center;
 }
 .box ul {
-    padding: 10px 20px;
+    padding: 0 10px;
 }
 .box li {
     font-size: 1.2rem;
@@ -73,6 +73,7 @@ header a {
 .box li a {
     transition: all 0.2s;
     display: block;
+    font-size: 18px;
 }
 .box li:hover a {
     color: #1976DE;
