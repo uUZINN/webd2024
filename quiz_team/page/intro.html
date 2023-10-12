@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- CSS -->
+    <link rel="stylesheet" href="../assets/css/fonts.css" />
+    <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    
+    <title>2024 연애 시뮬레이션</title>
+</head>
+<body>
+    <div class="inner__wrap">
+
+    </div>
+
+
+    <script>
+    // 선택자
+    const introWrap = document.querySelector(".inner__wrap");
+
+    // 변수 설정
+    let quizInfo = []; // 모든 퀴즈 정보
+    let currentIndex = 0; // 현재 퀴즈 인덱스
+    let currentRunTextIndex = 0; // 현재 runText 배열 요소 인덱스
+    let isRunTextMode = true; // 현재 모드가 runText 모드인지 나타내는 변수
+
+    // 문제 가져오기
+    const fetchQuiz = () => {
+    fetch("http://uzin4916.dothome.co.kr/quiz_team/assets/json/inhae.json")
+        .then((res) => res.json())
+        .then((items) => {
+        quizInfo = items.map((item, index) => {
+            const formattedQuiz = {
+            runText: item.runText, 
+            Question: item.Question,
+            choiceBad: item.choiceBad,
+            choiceGood: item.choiceGood,
+            };
+
+            // 보기 가져오기
+            const choices = Object.values(item.Choice);
+
+            formattedQuiz.infoChoice = choices;
+            return formattedQuiz;
+        });
+
+        console.log(quizInfo);
+        updataQuiz();
+        });
+    };
+
+// intro_box 클릭 이벤트 핸들러
+const introBoxClickHandler = () => {
+  if (!isRunTextMode) {
+    const nextBtn = document.querySelector("#dialog .dialog_box");
+    const choice = document.querySelector("#choice");
+    const dialog = document.querySelector("#dialog");
+    
+    // Question 모드에서는 다음 버튼(next_btn) 클릭 시 Choice 모드로 전환
+    nextBtn.addEventListener("click", () => {
+      dialog.classList.add("none");
+      choice.classList.remove("none");
+      
+      // 이후 Choice 모드에서 intro_box 클릭 이벤트 핸들러를 등록
+      choice.removeEventListener("click", introBoxClickHandler); // 중복 등록 방지
+      introWrap.addEventListener("click", introBoxClickHandler);
+    });
+
+    // 정답 확인 함수
+    function checkAnswer(quiz, userChoice) {
+            const goodChoice = document.querySelectorAll(".choice_A");
+            const BadChoice = document.querySelectorAll(".choice_B");
+            const answer = quiz.Answer; // JSON 파일에서 정답 가져오기
+            // 사용자의 선택과 정답 비교
+            if (userChoice === answer) {
+
+            } else {
+                // 오답인 경우
+                showResult(quiz.choiceBad);
+            }
+        }
+        // 결과를 출력하는 함수
+        function showResult(resultText) {
+            // 결과 표시 요소를 생성
+            const resultElement = document.createElement("div");
+            resultElement.classList.add("result");
+            resultElement.textContent = resultText;
+
+            // 결과 텍스트를 introWrap 요소에 추가
+            introWrap.appendChild(resultElement);
+
+            gsap.to(resultElement, { opacity: 1, duration: 2 });
+
+            setTimeout(() => {
+                gsap.to(resultElement, {
+                    opacity: 0, duration: 2, onComplete: () => {
+                        // 결과 요소를 제거
+                        resultElement.remove();
+
+                        // 여기서 runText 모드로 전환할 수 있도록 코드를 추가
+                        isRunTextMode = true;
+
+                        // 다음 runText 모드의 내용을 업데이트
+                        currentRunTextIndex++;
+
+                        // 만약 현재 배열 요소를 모두 표시했다면 Question 모드로 전환
+                        if (currentRunTextIndex >= quizInfo[currentIndex].runText.length) {
+                            currentRunTextIndex = 0; // 배열 요소 인덱스 초기화
+                            isRunTextMode = false; // Question 모드로 전환
+                        }
+
+                        // 퀴즈 업데이트
+                        updataQuiz();
+                    }
+                });
+            }, 3000); // 3초 후에 결과 요소를 제거하고 runText 모드로 전환됩니다.
+        }
+
+  } else {
+    // runText 모드에서 클릭 이벤트 핸들러 동작
+    // runText 모드에서 클릭 시 다음 runText 항목을 보여줄 수 있는 로직을 추가
+    currentRunTextIndex++; // 다음 runText 배열 요소 인덱스로 이동
+
+    // 만약 현재 배열 요소를 모두 표시했다면 Question 모드로 전환
+    if (currentRunTextIndex >= quizInfo[currentIndex].runText.length) {
+      currentRunTextIndex = 0; // 배열 요소 인덱스 초기화
+      isRunTextMode = false; // Question 모드로 전환
+    }
+
+    // 퀴즈 업데이트
+    updataQuiz();
+  }
+};
+
+
+
+// intro_box 클릭 이벤트를 등록
+introWrap.addEventListener("click", introBoxClickHandler);
+
+// 문제 출력
+const updataQuiz = () => {
+  const quiz = quizInfo[currentIndex];
+  if (quiz) {
+    let content = '';
+    if (isRunTextMode) {
+      // runText 모드
+      const runTextItem = quiz.runText[currentRunTextIndex];
+      content = `
+        <div id="intro" class="intro_wrap">
+            <div class="intro_box">
+                <p>${runTextItem}</p>
+                <button class="next_btn"><img src="../assets/img/next.png" alt=""></button>
+            </div>
+        </div>
+      `;
+    } else {
+      // Question 모드
+      content = `
+        <div id="dialog">
+            <div class="character">
+                <img src="../assets/img/inhyeA.png" alt="">
+            </div>
+            <div class="dialog_box">
+                <div class="tag">인혜</div>
+                <p>${quiz.Question}</p>
+                <button class="next_btn"><img src="../assets/img/next.png" alt=""></button>
+            </div>    
+        </div>
+        <div id="choice" class="none">
+            <div class="character">
+                <img src="../assets/img/inhyeA.png" alt="">
+            </div>
+            <div class="choice_box">
+                <p>${quiz.Question}</p>
+                <div class="choice_btn">
+                    <button class="choice_A">A. ${quiz.infoChoice[0]}</button>
+                    <button class="choice_B">B. ${quiz.infoChoice[1]}</button>
+                </div>
+            </div>    
+        </div>
+      `;
+    } 
+
+    const quizHTML = `
+        ${content}
+    `;
+    introWrap.innerHTML = quizHTML;
+
+  }
+};
+// 정답 확인 함수
+function checkAnswer(quiz, userChoice) {
+    const answer = quiz.Answer; // JSON 파일에서 정답 가져오기
+    // 사용자의 선택과 정답 비교
+    if (userChoice === answer) {
+        // 정답인 경우
+        showResult(quiz.choiceGood);
+    } else {
+        // 오답인 경우
+        showResult(quiz.choiceBad);
+    }
+}
+// 결과를 출력하는 함수
+function showResult(resultText) {
+    const resultContainer = document.querySelector(isRunTextMode);
+    // 결과 텍스트를 출력
+    resultContainer.textContent = isRunTextMode;
+}
+
+
+
+
+
+// 페이지가 로드된 후 실행
+document.addEventListener("DOMContentLoaded", () => {
+  fetchQuiz();
+});
+    </script>
+</body>
+</html>

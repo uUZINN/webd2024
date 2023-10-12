@@ -62,7 +62,17 @@
                     <li><a href="#sample17">17. 함수 유형 : 객체 생성자 함수</a></li>
                     <li><a href="#sample18">18. 함수 유형 : 프로토타입 함수</a></li>
                     <li><a href="#sample19">19. 함수 유형 : 객체 리터럴 함수</a></li>
-                    <li><a href="#sample20">20. 클래스</a></li>
+                    <li><a href="#sample20">20. 함수 : 즉시실행 함수</a></li>
+                    <li><a href="#sample21">21. 함수 : 파라미터 함수</a></li>
+                    <li><a href="#sample22">22. 함수 : 재귀 함수</a></li>
+                    <li><a href="#sample23">23. 함수 : 콜백 함수</a></li>
+                    <li><a href="#sample24">24. 함수 : 비동기 함수 : 콜백 함수</a></li>
+                    <li><a href="#sample25">25. 함수 : 비동기 함수 : 프로미스</a></li>
+                    <li><a href="#sample26">26. 함수 : 비동기 함수 : asyne/await</a></li>
+                    <li><a href="#sample27">27. 함수 : 중첩 함수</a></li>
+                    <li><a href="#sample28">28. 함수 : 클로저</a></li>
+                    <li><a href="#sample29">29. 클래스 : 기본</a></li>
+                    <li><a href="#sample30">30. 클래스 : 상속</a></li>
                 </ul>
             </div>
             <!-- //main__menu -->
@@ -796,7 +806,311 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample18 -->
+                <!-- //sample19 -->
+
+                <div id="sample20" class="sample">
+                    <h3>20. 함수 : 즉시실행 함수</h3>
+                    <p>
+                        즉시 실행 함수(IIFE, Immediately Invoked Function Expression)는 JavaScript에서 사용되는 함수 패턴 중 하나로, 함수를 정의하자마자 즉시 실행하는 방식을 말합니다. 이 패턴은 함수 내부의 코드를 외부에서 접근할 수 없도록 만들고, 지역 스코프를 생성하여 변수 충돌을 방지하거나 모듈 패턴을 구현하는 데 자주 사용됩니다.
+                    </p>
+<pre><code class="language-js">{
+    (function (){
+        console.log("25. 함수가 실행되었습니다.");
+    })();
+
+    (() => {
+        console.log("26. 함수가 실행되었습니다.");
+    })();
+}
+</code></pre>
+                    <p class="desc">
+                        1. 스코프 분리: 즉시 실행 함수 내에서 선언된 변수와 함수는 해당 함수의 지역 스코프에 속합니다. 이는 함수 내부에서 정의된 변수와 함수가 전역 스코프를 오염시키지 않도록 합니다.
+                        <br>
+                        2. 모듈 패턴: 즉시 실행 함수를 사용하여 모듈을 구현할 수 있습니다. 모듈 패턴을 사용하면 비공개 및 공개 멤버를 정의하여 정보 은닉과 재사용성을 높일 수 있습니다.
+                        <br>
+                        3. 변수 충돌 방지: 다른 스크립트나 라이브러리와 함께 사용할 때 변수 충돌을 방지하기 위해 즉시 실행 함수를 사용할 수 있습니다. 이로 인해 전역 네임스페이스의 오염을 방지할 수 있습니다.
+                        <br>
+                        4. 코드 블록: 즉시 실행 함수 내에서 임시로 사용되는 코드 블록을 생성할 수 있습니다. 이를 통해 코드 구조를 더 간결하게 유지하거나 조건부로 코드를 실행할 수 있습니다.
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                25. 함수가 실행되었습니다.<br>
+                                26. 함수가 실행되었습니다.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample20 -->
+
+                <div id="sample21" class="sample">
+                    <h3>21. 함수 : 파라미터 함수</h3>
+                    <p>
+                        파라미터 함수(Parameterized Function)란 함수를 호출할 때 함수 내부로 데이터를 전달하기 위한 메커니즘을 가리킵니다. 파라미터 함수는 함수의 정의 부분에서 매개변수(Parameter)를 선언하고, 함수를 호출할 때 실제 값(argument)을 전달하여 함수 내에서 사용할 수 있도록 합니다.
+                    </p>
+<pre><code class="language-js">{
+    function func(str = "27. 함수가 실행되었습니다."){
+        console.log(str);
+    }
+    func();
+
+    const func1 = (str = "28. 함수가 실행되었습니다.") => {
+        console.log(str);
+    }
+    func1();
+}
+</code></pre>
+                    <p class="desc">
+                        1. 매개변수 정의: 함수 정의 시, 함수의 매개변수를 정의합니다. 매개변수는 함수에 전달된 값의 이름이며, 함수 내부에서 사용할 수 있습니다.
+                        <br>
+                        2. 인자 전달: 함수를 호출할 때, 매개변수에 실제 값을 전달합니다. 이러한 값을 함수 호출 시 "인자(argument)"라고 합니다.
+                        <br>
+                        3. 다양한 입력 처리: 파라미터 함수를 사용하면 다양한 입력을 처리할 수 있습니다. 함수가 호출될 때마다 인자의 값이 달라질 수 있습니다.
+                        <br>
+                        4. 함수의 재사용: 동일한 함수 정의를 여러 곳에서 호출하여 재사용할 수 있습니다. 각 호출마다 다른 인자를 사용하여 다른 결과를 얻을 수 있습니다.
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                27. 함수가 실행되었습니다.<br>
+                                28. 함수가 실행되었습니다.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample21 -->
+
+                <div id="sample22" class="sample">
+                    <h3>22. 함수 : 재귀 함수 : 자기 자신을 호출하는 함수</h3>
+                    <p>
+                        재귀 함수(Recursive Function)는 자신을 호출하는 함수를 의미합니다. 즉, 함수 내에서 자기 자신을 다시 호출하는 것을 말합니다. 이러한 재귀 호출은 일반적으로 함수가 동일한 작업을 반복하면서 작업을 해결하는 데 사용됩니다. 재귀 함수는 특히 반복적인 작업을 간결하게 표현할 때 유용합니다.
+                    </p>
+<pre><code class="language-js">{
+    function func(num){
+        for(let i=0; i<=num; i++){
+            console.log("29. 함수가 실행되었습니다.");
+        }
+    }
+    func(10);
+
+    function func1(num){
+        if(num < 1) return;
+
+        console.log("30. 함수가 실행되었습니다.");
+        func1(num - 1);
+    }
+    func1(10);
+}
+</code></pre>
+                    <p class="desc">
+                        1. 재귀 함수는 반드시 하나 이상의 기본 사례(base case)를 가져야 합니다. 기본 사례는 재귀 호출을 중단하고 반환할 때 사용되며, 무한 루프를 방지합니다.
+                        <br>
+                        2. 재귀 함수는 자기 자신을 호출하는 부분이 필요합니다. 이 부분에서 작업을 분할하고, 작업의 크기를 줄여가며 기본 사례를 향해 진행합니다.
+                        <br>
+                        3. 재귀 함수는 함수 호출 스택을 사용하므로 재귀 호출이 많이 일어날 경우 스택 메모리를 소모할 수 있습니다. 따라서 깊은 재귀 호출을 피하려면 주의가 필요합니다.
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                29. 함수가 실행되었습니다.<br>
+                                30. 함수가 실행되었습니다.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample22 -->
+
+                <div id="sample23" class="sample">
+                    <h3>23. 콜백 함수 : 다른 함수로 실행되는 함수</h3>
+                    <p>
+                        콜백 함수(callback function)는 다른 함수 내에서 호출되거나 사용되는 함수를 가리킵니다. 콜백 함수는 JavaScript에서 일반적으로 비동기 작업을 처리하거나 함수의 동작을 확장하기 위해 사용됩니다.
+                    </p>
+<pre><code class="language-js">{
+    // 01. 이벤트 콜백 함수
+    function func(){
+        console.log("31. 함수가 실행되었습니다.");
+    }
+    btn.addEventListerner("click", func);
+
+    // 02. 함수를 다른 함수의 인자로 전달
+    // 함수가 동시에 실행되지 않게 하기 위해 만들어짐
+    function func1(){
+        console.log("32. 함수가 실행되었습니다.");
+    }
+    function func2(callback){
+        callback();
+        // func1();
+    }
+    func2(func1);
+
+    // 03. 반복문으로 콜백함수 만들기
+    function func3(num){
+        console.log(num + ". 함수가 실행되었습니다.");
+    }
+    function func4(callback){
+        for(let i=33; i<=38; i++){
+            callback(i);
+        }
+    }
+    func4(func3);
+}
+</code></pre>
+                    <p class="desc">
+                        func1 함수:<br>
+                        func1 함수는 가장 간단한 형태의 콜백 함수입니다.
+                        이 함수는 "32. 함수가 실행되었습니다."라는 메시지를 콘솔에 출력하는 역할을 합니다.
+                        func2 함수 내에서 func1 함수가 콜백으로 사용되어 실행됩니다.
+                        <br><br>
+                        func2 함수:<br>
+                        func2 함수는 다른 함수를 인자로 받아 실행하는 함수입니다.
+                        callback 매개변수로 다른 함수를 받고, 이 함수를 실행하는 역할을 합니다.
+                        func2 함수 내에서 callback(); 코드를 통해 전달된 함수(여기서는 func1)가 실행됩니다.
+                        <br><br>
+                        func3 함수:<br>
+                        func3 함수는 숫자(num)를 매개변수로 받아 해당 숫자를 콘솔에 출력하는 역할을 합니다.
+                        <br><br>
+                        func4 함수:<br>
+                        func4 함수는 두 개의 매개변수를 받습니다. 첫 번째 매개변수(callback)는 콜백 함수를 받습니다.
+                        func4 함수 내에서 for 반복문을 사용하여 숫자 범위를 생성하고, 각 숫자를 callback 함수에 인자로 전달하여 함수를 호출합니다.
+                        이를 통해 func3 함수가 여러 번 호출되면서 다양한 숫자가 출력됩니다.
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                31. 함수가 실행되었습니다.<br>
+                                32. 함수가 실행되었습니다.<br>
+                                33. 함수가 실행되었습니다.<br>
+                                34. 함수가 실행되었습니다.<br>
+                                35. 함수가 실행되었습니다.<br>
+                                36. 함수가 실행되었습니다.<br>
+                                37. 함수가 실행되었습니다.<br>
+                                38. 함수가 실행되었습니다.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample23 -->
+
+                <div id="sample24" class="sample">
+                    <h3>24. 함수 : 비동기 함수 : 콜백 함수</h3>
+                    <p>
+                        콜백 함수(callback function)는 다른 함수 내에서 호출되거나 사용되는 함수를 가리킵니다. 콜백 함수는 JavaScript에서 일반적으로 비동기 작업을 처리하거나 함수의 동작을 확장하기 위해 사용됩니다.
+                    </p>
+<pre><code class="language-js">{
+    // 01. 동기적인 함수 호출
+    function func1(){
+        console.log("39. 함수가 실행되었습니다.");
+    }
+    function func2(){
+        console.log("40. 함수가 실행되었습니다.");
+    }
+    func1();
+    func2();
+
+    // 02. 비동기적인 함수 호출
+    function func3(){
+        setTimeout(() => {
+            console.log("41. 함수가 실행되었습니다.");
+        }, 1000)
+    }
+    function func4(){
+        console.log("42. 함수가 실행되었습니다.");
+    }
+    func3();
+    func4();
+
+    // 03. 비동기적인 콜백 함수 호출
+    {
+        function func5(callback){
+            setTimeout(() => {
+                console.log("43. 함수가 실행되었습니다.");
+                callback();
+            }, 1000)
+        }
+        function func6(){
+            console.log("44. 함수가 실행되었습니다.");
+        }
+        func5(function(){
+            func6();
+        });
+    }
+
+    // 콜백 지옥
+    {
+        function funcA(callback){
+            setTimeout(() => {
+                console.log("funcA가 실행되었습니다.");
+                callback();
+            }, 1000);
+        }
+        function funcB(callback){
+            setTimeout(() => {
+                console.log("funcB가 실행되었습니다.");
+                callback();
+            }, 1000);
+        }
+        function funcC(callback){
+            setTimeout(() => {
+                console.log("funcC가 실행되었습니다.");
+                callback();
+            }, 1000);
+        }
+        function funcD(){
+            setTimeout(() => {
+                console.log("funcD가 실행되었습니다.");
+            }, 1000);
+        }
+
+        funcA(function(){
+            funcB(function(){
+                funcC(function(){
+                    funcD();
+                });
+            });
+        });
+    }
+}
+</code></pre>
+                    <p class="desc">
+                        func1 함수:<br>
+                        func1 함수는 가장 간단한 형태의 콜백 함수입니다.
+                        이 함수는 "32. 함수가 실행되었습니다."라는 메시지를 콘솔에 출력하는 역할을 합니다.
+                        func2 함수 내에서 func1 함수가 콜백으로 사용되어 실행됩니다.
+                        <br><br>
+                        func2 함수:<br>
+                        func2 함수는 다른 함수를 인자로 받아 실행하는 함수입니다.
+                        callback 매개변수로 다른 함수를 받고, 이 함수를 실행하는 역할을 합니다.
+                        func2 함수 내에서 callback(); 코드를 통해 전달된 함수(여기서는 func1)가 실행됩니다.
+                        <br><br>
+                        func3 함수:<br>
+                        func3 함수는 숫자(num)를 매개변수로 받아 해당 숫자를 콘솔에 출력하는 역할을 합니다.
+                        <br><br>
+                        func4 함수:<br>
+                        func4 함수는 두 개의 매개변수를 받습니다. 첫 번째 매개변수(callback)는 콜백 함수를 받습니다.
+                        func4 함수 내에서 for 반복문을 사용하여 숫자 범위를 생성하고, 각 숫자를 callback 함수에 인자로 전달하여 함수를 호출합니다.
+                        이를 통해 func3 함수가 여러 번 호출되면서 다양한 숫자가 출력됩니다.
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                31. 함수가 실행되었습니다.<br>
+                                32. 함수가 실행되었습니다.<br>
+                                33. 함수가 실행되었습니다.<br>
+                                34. 함수가 실행되었습니다.<br>
+                                35. 함수가 실행되었습니다.<br>
+                                36. 함수가 실행되었습니다.<br>
+                                37. 함수가 실행되었습니다.<br>
+                                38. 함수가 실행되었습니다.
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample23 -->
             </div>
             <!-- //main__sample -->
         </main>
@@ -819,216 +1133,252 @@
     <script src="../assets/js/highlight.min.js"></script>
     <script>hljs.highlightAll();</script>
     <script>
-        // 01. 함수 : 선언적 함수
+
+        // 20. 함수 : 즉시실행 함수
         {
-            function func(){
-                console.log("1. 함수가 실행되었습니다.");
-            }
-            func();
+            (function (){
+                console.log("25. 함수가 실행되었습니다.");
+            })();
+
+            (() => {
+                console.log("26. 함수가 실행되었습니다.");
+            })();
         }
 
-        // 02. 함수 : 익명 함수
+        // 21. 함수 : 파라미터 함수
         {
-            const func = function(){
-                console.log("2. 함수가 실행되었습니다.");
-            }
-            func();
-        }
-
-        // 03. 함수 : 매개변수 함수
-        {
-            function func(str){
+            function func(str = "27. 함수가 실행되었습니다."){
                 console.log(str);
             }
-            func("3. 함수가 실행되었습니다.");
-        }
-
-        // 04. 함수 : 리턴값 함수
-        {
-            function func(){
-                return "4. 함수가 실행되었습니다.";
-            }
-            console.log(func());
-        }
-
-        // 05. 함수 : 매개변수 + 리턴값 함수
-        {
-            function func(str){
-                return str;
-            }
-            console.log(func("5. 함수가 실행되었습니다."));
-        }
-
-        // 06. 화살표 함수 : 선언적 함수
-        {
-            func = () => {
-                console.log("6. 함수가 실행되었습니다.");
-            }
             func();
-        }
 
-        // 07. 화살표 함수 : 익명 함수
-        {
-            const func = () => {
-                console.log("7. 함수가 실행되었습니다.");
-            }
-            func();
-        }
-
-        // 08. 화살표 함수 : 매개변수 함수
-        {
-            func =(str) => {
+            const func1 = (str = "28. 함수가 실행되었습니다.") => {
                 console.log(str);
             }
-            func("8. 함수가 실행되었습니다.");
+            func1();
         }
 
-        // 09. 화살표 함수 : 리턴값 함수
+        // 22. 함수 : 재귀함수 : 자기 자신을 호출하는 함수
         {
-            func = () => {
-                return "9. 함수가 실행되었습니다.";
-            }
-            console.log(func());
-        }
-
-        // 10. 화살표 함수 : 익명 함수 + 매개변수 + 리턴값 함수
-        {
-            const func = (str) => {
-                return str;
-            }
-            console.log(func("10. 함수가 실행되었습니다."));
-        }
-
-        // 11. 함수 유형 : 함수와 매개변수를 이용한 형태
-        {
-            function func(num, str){
-                console.log(num + ". " + str);  //표현방식1
-                console.log(`${num}. ${str}`);  //표현방식2
-            }
-            func(11, "함수가 실행되었습니다.");
-        }
-
-        // 12. 함수 유형 : 함수와 변수를 이용한 형태
-        {
-            const num = 12;
-            const str = "함수가 실행되었습니다";
-
-            function func(num, str){
-                console.log(`${num}. ${str}`);  
-            }
-            func(num, str);
-        }
-
-        // 13. 함수 유형 : 함수와 배열을 이용한 형태
-        {
-            const num = [13, 14];
-            const str = ["함수가 실행되었습니다.", "함수가 실행되었습니다."];
-
-            function func(num, str){
-                console.log(`${num}. ${str}`);  
-            }
-            func(num[0], str[0]);
-            func(num[1], str[1]);
-        }
-
-        // 14. 함수 유형 : 함수와 객체를 이용한 형태
-        {
-            const  info = {
-                num : 15,
-                str : "함수가 실행되었습니다."
-            }
-            function func(num, str){
-                console.log(`${num}. ${str}`);  
-            }
-            func(info.num, info.str);
-        }
-
-        // 15. 함수 유형 : 함수와 객체 및 배열을 이용한 형태
-        {
-            const info = [
-                {num: 16, str: "함수가 실행되었습니다."},
-                {num: 17, str: "함수가 실행되었습니다."},
-            ];
-            function func(num, str){
-                console.log(`${num}. ${str}`);  
-            }
-            func(info[0].num, info[0].str);
-            func(info[1].num, info[1].str);
-        }
-
-        // 16. 함수 유형 : 객체 안에 함수를 이용한 형태
-        {
-            const info = {
-                num: 18,
-                str: "함수가 실행되었습니다.",
-                result: () => {
-                    console.log(`${info.num}. ${info.str}`);
+            function func(num){
+                for(let i=0; i<=num; i++){
+                    console.log("29. 함수가 실행되었습니다.");
                 }
             }
-            info.result();
+            func(10);
+
+            function func1(num){
+                if(num < 1) return;
+
+                console.log("30. 함수가 실행되었습니다.");
+                func1(num - 1);
+            }
+            func1(10);
         }
 
-        // 17. 함수 유형 : 객체 생성자 함수
+        // 23. 콜백 함수 : 다른 함수로 실행되는 함수
         {
-            function Func(num, str){
-                this.num = num;
-                this.str = str;
-                this.result = () => {
-                    console.log(`${this.num}. ${this.str}`);
+            // 01. 이벤트 콜백 함수
+            // function func(){
+            //     console.log("31. 함수가 실행되었습니다.");
+            // }
+            // btn.addEventListerner("click", func);
+
+            // 02. 함수를 다른 함수의 인자로 전달
+            // 함수가 동시에 실행되지 않게 하기 위해 만들어짐
+            function func1(){
+                console.log("32. 함수가 실행되었습니다.");
+            }
+            function func2(callback){
+                callback();
+                // func1();
+            }
+            func2(func1);
+
+            // 03. 반복문으로 콜백함수 만들기
+            function func3(num){
+                console.log(num + ". 함수가 실행되었습니다.");
+            }
+            function func4(callback){
+                for(let i=33; i<=38; i++){
+                    callback(i);
                 }
             }
-            // 인스턴스 생성
-            const info1 = new Func(19, "함수가 실행되었습니다.");
-            const info2 = new Func(20, "함수가 실행되었습니다.");
-
-            // 호출
-            info1.result();
-            info2.result();
+            func4(func3);
         }
 
-        // 18. 함수 유형 : 프로토타입 함수
-        // 화살표 함수에서 this는 인식 안됨, function 사용
+        // 24. 함수 : 비동기 함수 : 콜백 함수
         {
-            function Func(num, str){
-                this.num = num;
-                this.str = str;
+            // 01. 동기적인 함수 호출
+            function func1(){
+                console.log("39. 함수가 실행되었습니다.");
+            }
+            function func2(){
+                console.log("40. 함수가 실행되었습니다.");
+            }
+            func1();
+            func2();
+
+            // 02. 비동기적인 함수 호출
+            function func3(){
+                setTimeout(() => {
+                    console.log("41. 함수가 실행되었습니다.");
+                }, 1000)
+            }
+            function func4(){
+                console.log("42. 함수가 실행되었습니다.");
+            }
+            func3();
+            func4();
+
+            // 03. 비동기적인 콜백 함수 호출
+            {
+                function func5(callback){
+                    setTimeout(() => {
+                        console.log("43. 함수가 실행되었습니다.");
+                        callback();
+                    }, 1000)
+                }
+                function func6(){
+                    console.log("44. 함수가 실행되었습니다.");
+                }
+                func5(function(){
+                    func6();
+                });
             }
 
-            Func.prototype.result = function(){
-                console.log(`${this.num}. ${this.str}`);
+            // 콜백 지옥
+            {
+                function funcA(callback){
+                    setTimeout(() => {
+                        console.log("funcA가 실행되었습니다.");
+                        callback();
+                    }, 1000);
+                }
+                function funcB(callback){
+                    setTimeout(() => {
+                        console.log("funcB가 실행되었습니다.");
+                        callback();
+                    }, 1000);
+                }
+                function funcC(callback){
+                    setTimeout(() => {
+                        console.log("funcC가 실행되었습니다.");
+                        callback();
+                    }, 1000);
+                }
+                function funcD(){
+                    setTimeout(() => {
+                        console.log("funcD가 실행되었습니다.");
+                    }, 1000);
+                }
+
+                funcA(function(){
+                    funcB(function(){
+                        funcC(function(){
+                            funcD();
+                        });
+                    });
+                });
             }
-
-            const info1 = new Func(21, "함수가 실행되었습니다.");
-            const info2 = new Func(22, "함수가 실행되었습니다.");
-
-            info1.result();
-            info2.result();
         }
 
-        // 19. 함수 유형 : 객체 리터럴 함수
+        // 25. 함수 : 비동기 함수 : 프로미스
         {
-            function Func(num, str){
-                this.num = num;
-                this.str = str;
-            }
+            // let data = true;
 
-            Func.prototype = {
-                result1 : function(){
-                    console.log(`${this.num}. ${this.str}`);
-                },
-                result2 : function(){
-                    console.log(`${this.num}. ${this.str}`);
+            // const func = new Promise((resolve, reject) => {
+            //     if(data){
+            //         resolve("45. 함수가 실행되었습니다.");
+            //     } else {
+            //         reject("45. 함수가 실행되지 않았습니다.")
+            //     }
+            // });
+
+            // func
+            //     .then(
+            //         result => console.log(result)
+            //     )
+            //     .catch (
+            //         error => console.log(error)
+            //     )
+
+            // 콜백지옥 --> 프로미스
+            // function funcA(){
+            //     return new Promise((resolve) => {
+            //         setTimeout(() => {
+            //             console.log("funcA가 실행되었습니다.");
+            //             resolve();
+            //         }, 1000);
+            //     })
+            // }
+            // function funcB(){
+            //     return new Promise((resolve) => {
+            //         setTimeout(() => {
+            //             console.log("funcB가 실행되었습니다.");
+            //             resolve();
+            //         }, 1000);
+            //     })
+            // }
+            // function funcC(){
+            //     return new Promise((resolve) => {
+            //         setTimeout(() => {
+            //             console.log("funcC가 실행되었습니다.");
+            //             resolve();
+            //         }, 1000);
+            //     })
+            // }
+            // function funcD(){
+            //     return new Promise((resolve) => {
+            //         setTimeout(() => {
+            //             console.log("funcD가 실행되었습니다.");
+            //             resolve();
+            //         }, 1000);
+            //     })
+            // }
+            // funcA()
+            //     .then(funcB)
+            //     .then(funcC)
+            //     .then(funcD)
+            //     .catch((error) => {
+            //         console.log(error)
+            //     })
+        }
+
+        // 26. 함수 : 비동기 함수 : asyne/await
+        {
+            // 01
+            function func(){
+                console.log("46. 함수가 실행되었습니다.");
+            }
+            func();
+
+            // 02
+            async function func2(){
+                console.log("47. 함수가 실행되었습니다.");
+            }
+            func2();
+
+            // 03
+            async function func3(){
+                const result = await fetch("https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json")
+                const data = await result.json();
+                console.log(data)
+            }
+            func3();
+
+            // 04
+            async function func4(){
+                try {
+                    const result = await fetch("https://webstoryboy.github.io/webs2024/json/gineungsaJC2011_05.json")
+                    const data = await result.json();
+                    console.log(data);
+                } catch (error){
+                    console.log(error);
                 }
             }
-
-            const info1 = new Func(23, "함수가 실행되었습니다.");
-            const info2 = new Func(24, "함수가 실행되었습니다.");
-
-            info1.result1();
-            info2.result2();
+            func4();
         }
-
-        // 20. 클래스
     </script>
 </body>
 </html>

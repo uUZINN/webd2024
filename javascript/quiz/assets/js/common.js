@@ -8,10 +8,10 @@ const modalCont = document.querySelector(".modal__cont");
 modalBtn.addEventListener("click", () => {
     modalCont.classList.add("show");
     modalCont.classList.remove("hide");
-})
+});
 modalClose.addEventListener("click", () => {
     modalCont.classList.add("hide");
-})
+});
 
 // 탭메뉴
 const tabBtn = document.querySelectorAll(".modal__box .tabs > div");

@@ -65,6 +65,7 @@
                     <li><a href="#sample19">19. 객체 : 데이터 저장(키와값) : 표현방법8 : 객체 + 함수가 있는 방식</a></li>
                     <li><a href="#sample20">20. 객체 : 데이터 저장(키와값) : 표현방법9 : 객체 구조 분해 할당</a></li>
                     <li><a href="#sample21">21. 객체 : 데이터 저장(키와값) : 표현방법10 : 객체 펼침연산자</a></li>
+                    <li><a href="#sample22">22. 파일 : 데이터 교환(JSON)</a></li>
                 </ul>
                 <ul>
                     <li><a href="#sample22">++ 지역변수/전역변수</a></li>
@@ -894,11 +895,52 @@
                 </div>
                 <!-- //sample21 -->
 
-
-
-
                 <div id="sample22" class="sample">
-                    <h3>22. 변수 : 지역변수 + 전역변수</h3>
+                    <h3>22. 파일 : 데이터 교환(JSON)</h3>
+                    <p>
+                        데이터 교환(JSON)은 데이터를 효과적으로 저장하고 전송하기 위한 경량의 형식입니다. 
+                        JSON은 "JavaScript Object Notation"의 약어로, 데이터를 구조화된 텍스트 형식으로 표현하는데 사용됩니다. 
+                        JSON은 다양한 프로그래밍 언어에서 지원되며, 특히 웹 애플리케이션에서 데이터 교환의 표준 형식으로 널리 사용됩니다.
+                    </p>
+<pre><code class="language-js">// json 데이터를 객체로 변환
+    const jsonString = '{"name": "webs", "age": "30"}';
+    const jsonObject = JSON.parse(jsonString);
+    console.log(jsonObject.name);
+
+    // webs
+
+    // 객체를 json 데이터로 변환
+    const person = {name: "webs", age: 30};
+    const jsonPerson = JSON.stringify(person);
+    console.log(jsonPerson);
+
+    // '{"name": "webs", "age": "30"}'
+</code></pre>
+                    <p class="desc">
+                        1. 가독성: JSON은 사람과 기계 모두 이해하기 쉬운 텍스트 형식으로 구성되어 있습니다. 이로 인해 개발자가 데이터를 빠르게 확인하고 디버그하기 쉽습니다.
+                        <br>
+                        2. 구조화: JSON 데이터는 객체와 배열을 사용하여 계층 구조를 가질 수 있습니다. 객체는 중괄호 {}로, 배열은 대괄호 []로 나타내며, 이러한 구조를 활용하여 복잡한 데이터 구조를 표현할 수 있습니다.
+                        <br>
+                        3. 데이터 타입: JSON은 다양한 데이터 타입을 지원합니다. 주요 데이터 타입으로는 문자열, 숫자, 불리언, 객체, 배열, null이 있습니다.
+                        <br>
+                        4. 키-값 쌍: JSON은 키와 해당 값을 쌍으로 저장하는데, 이것을 "속성" 또는 "필드"라고 합니다. 키는 문자열이며, 값은 문자열, 숫자, 불리언, 객체, 배열 또는 null이 될 수 있습니다.
+                    </p>
+                    <div class="result">
+                        <details>
+                            <summary>결과 확인하기</summary>
+                            <div>
+                                webs<br>
+                                {"name": "webs", "age": "30"}
+                            </div>
+                        </details>
+                    </div>
+                </div>
+                <!-- //sample22 -->
+
+
+
+                <div id="sample23" class="sample">
+                    <h3>23. 변수 : 지역변수 + 전역변수</h3>
                     <p>배열은 여러개의 데이터를 하나의 변수에 저장할 수 있습니다. 배열을 선언해서 쓰는 방법입니다.</p>
 <pre><code class="language-js">{
     let x = 100;            //전역변수
@@ -941,10 +983,10 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample22 -->
+                <!-- //sample23 -->
 
-                <div id="sample23" class="sample">
-                    <h3>23. 산술 연산자</h3>
+                <div id="sample24" class="sample">
+                    <h3>24. 산술 연산자</h3>
                     <p>사술 연산자에는 +, -, *(곱하기), /(나누기), %(나머지)가 있습니다.</p>
 <pre><code class="language-js">{
     var num1 = 15;
@@ -1024,10 +1066,10 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample23 -->
+                <!-- //sample24 -->
 
-                <div id="sample24" class="sample">
-                    <h3>24. 문자 결합 연산자</h3>
+                <div id="sample25" class="sample">
+                    <h3>25. 문자 결합 연산자</h3>
                     <p>문자 결합 연산자는 피연산자(연산 대상 데이터)가 문자형 데이터입니다. 여러개의 문자를 하나의 문자형 데이터로 결합할 때 사용합니다.</p>
 <pre><code class="language-js">{
     var t1 = "학교종이";
@@ -1055,10 +1097,10 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample24 -->
+                <!-- //sample25 -->
 
-                <div id="sample25" class="sample">
-                    <h3>25. 대입 연산자</h3>
+                <div id="sample26" class="sample">
+                    <h3>26. 대입 연산자</h3>
                     <p>대입 연산자(=)는 연산된 데이터를 변수에 저장할 때 사용합니다.</p>
 <pre><code class="language-js">{
     var num1 = 10;
@@ -1092,10 +1134,10 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample25 -->
+                <!-- //sample26 -->
 
-                <div id="sample26" class="sample">
-                    <h3>26. 증감 연산자</h3>
+                <div id="sample27" class="sample">
+                    <h3>27. 증감 연산자</h3>
                     <p>증감 연산자에는 숫자형 데이터를 1씩 증가시키는 증가 연산자(++)와 반대로 1씩 감소시키는 감소 연산자(--)가 있습니다.</p>
 <pre><code class="language-js">{
     var num1 = 10;
@@ -1136,10 +1178,10 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample26 -->
+                <!-- //sample27 -->
 
-                <div id="sample27" class="sample">
-                    <h3>27. 비교 연산자</h3>
+                <div id="sample28" class="sample">
+                    <h3>28. 비교 연산자</h3>
                     <p>두 데이터를 '크다, 작다, 같다'와 같이 비교할 때 사용하는 연산자입니다. 결괏값은 true(참) 또는 false(거짓)로 논리형 데이터를 반환합니다.</p>
 <pre><code class="language-js">{
     var a = 10;
@@ -1194,10 +1236,10 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample27 -->
+                <!-- //sample28 -->
 
-                <div id="sample28" class="sample">
-                    <h3>28. 논리 연산자</h3>
+                <div id="sample29" class="sample">
+                    <h3>29. 논리 연산자</h3>
                     <p>논리 연산자에는 ||(or), &&(and), !(not)이 있으며, 논리 연산자는 피연산자가 논리형 데이터인 true 또는 false로 결괏값을 반환합니다.</p>
 <pre><code class="language-js">{
     var a = 10;
@@ -1240,10 +1282,10 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample28 -->
+                <!-- //sample29 -->
 
-                <div id="sample29" class="sample">
-                    <h3>29. 삼항 조건 연산자</h3>
+                <div id="sample30" class="sample">
+                    <h3>30. 삼항 조건 연산자</h3>
                     <p>삼항 조건 연산자는 조건식(true 또는 false의 결괏값을 반환)의 결과에 따라 실행 결과가 달라지는 삼항 연산자로, 연산을 위해 피연산자가 3개 필요합니다.</p>
 <pre><code class="language-js">{
     var a = 10;
@@ -1268,7 +1310,7 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample29 -->
+                <!-- //sample30 -->
 
                 <div id="sample_tit" class="sample">
                     <h3>자료형이란?</h3>
@@ -1280,8 +1322,8 @@
                     </p>
                 </div>
 
-                <div id="sample30" class="sample">
-                    <h3>30. 자료형 : 숫자</h3>
+                <div id="sample31" class="sample">
+                    <h3>31. 자료형 : 숫자</h3>
                     <p>숫자(Number): 정수(integer)나 부동소수점(floating-point) 숫자를 나타냅니다. 
                         예를 들어 42, 3.14 등이 숫자 자료형에 해당합니다.</p>
 <pre><code class="language-js">{
@@ -1305,10 +1347,10 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample30 -->
+                <!-- //sample31 -->
 
-                <div id="sample31" class="sample">
-                    <h3>31. 자료형 : 문자열</h3>
+                <div id="sample32" class="sample">
+                    <h3>32. 자료형 : 문자열</h3>
                     <p>
                         문자의 시퀀스를 나타냅니다. 작은 따옴표 ' '나 큰 따옴표 " "로 둘러싸인 문자열을 사용합니다. 
                         예를 들어 'Hello', "JavaScript" 등이 문자열 자료형에 해당합니다.
@@ -1330,10 +1372,10 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample31 -->
+                <!-- //sample32 -->
 
-                <div id="sample32" class="sample">
-                    <h3>32. 자료형 : 논리</h3>
+                <div id="sample33" class="sample">
+                    <h3>33. 자료형 : 논리</h3>
                     <p>
                         논리형(Boolean)은 JavaScript에서 두 가지 값만 가지는 자료형으로, true나 false 중 하나의 값을 나타냅니다. 
                         논리형은 주로 조건을 표현하거나 조건문, 반복문 등에서 제어 흐름을 다루는 데 사용됩니다.
@@ -1361,10 +1403,10 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample32 -->
+                <!-- //sample33 -->
 
-                <div id="sample33" class="sample">
-                    <h3>33. 자료형 : null</h3>
+                <div id="sample34" class="sample">
+                    <h3>34. 자료형 : null</h3>
                     <p>
                         null은 JavaScript에서 특별한 값을 나타내는 자료형 중 하나입니다. 
                         null은 변수가 값이 없음을 나타내거나, 의도적으로 값이 없음을 표현할 때 사용됩니다.     
@@ -1387,10 +1429,10 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample33 -->
+                <!-- //sample34 -->
 
-                <div id="sample34" class="sample">
-                    <h3>34. 자료형 : undefined</h3>
+                <div id="sample35" class="sample">
+                    <h3>35. 자료형 : undefined</h3>
                     <p>
                         undefined는 변수가 선언되었지만 아무런 값이 할당되지 않은 상태를 나타내는 값입니다.     
                     </p>
@@ -1412,10 +1454,10 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample34 -->
+                <!-- //sample35 -->
 
-                <div id="sample35" class="sample">
-                    <h3>35. 자료형 : object</h3>
+                <div id="sample36" class="sample">
+                    <h3>36. 자료형 : object</h3>
                     <p>
                         object는 다양한 데이터와 기능을 하나로 묶어 표현할 수 있는 자료형입니다.     
                     </p>
@@ -1445,10 +1487,10 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample35 -->
+                <!-- //sample36 -->
 
-                <div id="sample36" class="sample">
-                    <h3>36. 자료형 : Array</h3>
+                <div id="sample37" class="sample">
+                    <h3>37. 자료형 : Array</h3>
                     <p>
                         Array는 여러 개의 값을 순서대로 저장하는 데이터 구조입니다.      
                     </p>
@@ -1474,10 +1516,10 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample36 -->
+                <!-- //sample38 -->
 
-                <div id="sample37" class="sample">
-                    <h3>37. 자료형 : Function</h3>
+                <div id="sample38" class="sample">
+                    <h3>38. 자료형 : Function</h3>
                     <p>
                         function은 코드 블록을 나타내는 자료형으로, 
                         재사용 가능한 동작을 정의하고 호출할 수 있는 기능을 제공합니다.  
@@ -1504,7 +1546,7 @@
                         </details>
                     </div>
                 </div>
-                <!-- //sample37 -->
+                <!-- //sample38 -->
             </div>
             <!-- //main__sample -->
         </main>
@@ -1868,6 +1910,21 @@
             console.log(obj3);
         }
        
+
+        // 22. 파일 : 데이터 교환(JSON)
+        // json 데이터를 객체로 변환
+        const jsonString = '{"name": "webs", "age": "30"}';
+        const jsonObject = JSON.parse(jsonString);
+        console.log(jsonObject.name);
+
+        // webs
+
+        // 객체를 json 데이터로 변환
+        const person = {name: "webs", age: 30};
+        const jsonPerson = JSON.stringify(person);
+        console.log(jsonPerson);
+
+        // '{"name": "webs", "age": "30"}'
     </script>
 </body>
 </html>
