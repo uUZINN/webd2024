@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>이벤트 객체</title>
 
-    <link rel="stylesheet" href="https://webfontworld.github.io/gmarket/GmarketSans.css" >
+    <link rel="stylesheet" href="https://webfontworld.github.io/gmarket/GmarketSans.css">
     <link rel="stylesheet" href="https://websfont.github.io/nanumSquareNeo/nanumSquareNeo.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="../assets/css/default.min.css">
 </head>
+
 <body>
     <div id="wrap">
         <header id="header">
@@ -34,7 +36,7 @@
                 <ul>
                     <li><a href="javascript11.html">데이터 효과</a></li>
                     <li><a href="javascript12.html">퀴즈 효과</a></li>
-                    <li><a href="javascript13.html">마우스 효과</a></li>
+                    <li><a href="javascript13.html">GSAP 효과</a></li>
                     <li><a href="javascript14.html">슬라이드 효과</a></li>
                 </ul>
             </nav>
@@ -46,53 +48,83 @@
                 <h3>이벤트</h3>
                 <ul>
                     <li><a href="#sample01">01. 이벤트 메서드 : <strong>addEventListener("click")</strong> : 클릭했을 때</a></li>
-                    <li><a href="#sample02">02. 이벤트 메서드 : <strong>addEventListener("dblclick")</strong> : 더블 클릭했을 때</a></li>
-                    <li><a href="#sample03">03. 이벤트 메서드 : <strong>addEventListener("lode")</strong> : 문서 로딩이 끝났을 때</a></li>
-                    <li><a href="#sample04">04. 이벤트 메서드 : <strong>addEventListener("DOMContentLoaded")</strong> : 문서 로딩이 끝났을 때</a></li>
-                    <li><a href="#sample05">05. 이벤트 메서드 : <strong>addEventListener("error")</strong> : 문서가 정확히 로딩되지 않았을 때</a></li>
+                    <li><a href="#sample02">02. 이벤트 메서드 : <strong>addEventListener("dblclick")</strong> : 더블 클릭했을 때</a>
+                    </li>
+                    <li><a href="#sample03">03. 이벤트 메서드 : <strong>addEventListener("lode")</strong> : 문서 로딩이 끝났을 때</a>
+                    </li>
+                    <li><a href="#sample04">04. 이벤트 메서드 : <strong>addEventListener("DOMContentLoaded")</strong> : 문서 로딩이
+                            끝났을 때</a></li>
+                    <li><a href="#sample05">05. 이벤트 메서드 : <strong>addEventListener("error")</strong> : 문서가 정확히 로딩되지 않았을
+                            때</a></li>
                     <li><a href="#sample06">06. 이벤트 메서드 : <strong>addEventListener("scroll")</strong> : 스크롤했을 때</a></li>
-                    <li><a href="#sample07">07. 이벤트 메서드 : <strong>addEventListener("resize")</strong> : 브라우저 사이즈 변경 됐을 때</a></li>
-                    <li><a href="#sample08">08. 이벤트 메서드 : <strong>addEventListener("selectstart")</strong> : 텍스트 선택을 시작했을 때</a></li>
+                    <li><a href="#sample07">07. 이벤트 메서드 : <strong>addEventListener("resize")</strong> : 브라우저 사이즈 변경 됐을
+                            때</a></li>
+                    <li><a href="#sample08">08. 이벤트 메서드 : <strong>addEventListener("selectstart")</strong> : 텍스트 선택을
+                            시작했을 때</a></li>
                 </ul>
                 <h3>마우스 포인터</h3>
                 <ul>
-                    <li><a href="#sample01">01. 이벤트 메서드 : <strong>addEventListener("mousedown")</strong> : 마우스 버튼을 클릭했을 때</a></li>
-                    <li><a href="#sample02">02. 이벤트 메서드 : <strong>addEventListener("mouseup")</strong> : 마우스 버튼을 떼는 경우</a></li>
-                    <li><a href="#sample03">03. 이벤트 메서드 : <strong>addEventListener("mousemove")</strong> : 마우스를 움직이는 경우</a></li>
-                    <li><a href="#sample04">04. 이벤트 메서드 : <strong>addEventListener("mouseenter")</strong> : 요소 위에 포인터 요소 위치가 있을 때</a></li>
-                    <li><a href="#sample05">05. 이벤트 메서드 : <strong>addEventListener("mouseleave")</strong> : 요소 위에 포인터 요소 위치가 벗어 났을 때</a></li>
-                    <li><a href="#sample06">06. 이벤트 메서드 : <strong>addEventListener("mouseover")</strong> : 요소 위에 포인터 요소 위치가 있을 때</a></li>
-                    <li><a href="#sample07">07. 이벤트 메서드 : <strong>addEventListener("mouseout")</strong> : 요소 위에 포인터 요소 위치가 벗어 났을 때</a></li>
+                    <li><a href="#sample01">01. 이벤트 메서드 : <strong>addEventListener("mousedown")</strong> : 마우스 버튼을 클릭했을
+                            때</a></li>
+                    <li><a href="#sample02">02. 이벤트 메서드 : <strong>addEventListener("mouseup")</strong> : 마우스 버튼을 떼는
+                            경우</a></li>
+                    <li><a href="#sample03">03. 이벤트 메서드 : <strong>addEventListener("mousemove")</strong> : 마우스를 움직이는
+                            경우</a></li>
+                    <li><a href="#sample04">04. 이벤트 메서드 : <strong>addEventListener("mouseenter")</strong> : 요소 위에 포인터 요소
+                            위치가 있을 때</a></li>
+                    <li><a href="#sample05">05. 이벤트 메서드 : <strong>addEventListener("mouseleave")</strong> : 요소 위에 포인터 요소
+                            위치가 벗어 났을 때</a></li>
+                    <li><a href="#sample06">06. 이벤트 메서드 : <strong>addEventListener("mouseover")</strong> : 요소 위에 포인터 요소
+                            위치가 있을 때</a></li>
+                    <li><a href="#sample07">07. 이벤트 메서드 : <strong>addEventListener("mouseout")</strong> : 요소 위에 포인터 요소
+                            위치가 벗어 났을 때</a></li>
                 </ul>
                 <h3>폼</h3>
                 <ul>
-                    <li><a href="#sample01">01. 이벤트 메서드 : <strong>addEventListener("blur")</strong> : 폼 요소에 포커스를 잃었을 때</a></li>
-                    <li><a href="#sample02">02. 이벤트 메서드 : <strong>addEventListener("change")</strong> : 목록이나 체크 상태 등이 변경되었을 때</a></li>
-                    <li><a href="#sample03">03. 이벤트 메서드 : <strong>addEventListener("focus")</strong> : 폼 요소에 포커스를 놓았을 때</a></li>
-                    <li><a href="#sample04">04. 이벤트 메서드 : <strong>addEventListener("reset")</strong> : 폼이 리셋되었을 때</a></li>
-                    <li><a href="#sample05">05. 이벤트 메서드 : <strong>addEventListener("submit")</strong> : 폼에 있는 버튼을 클릭했을 때</a></li>
+                    <li><a href="#sample01">01. 이벤트 메서드 : <strong>addEventListener("blur")</strong> : 폼 요소에 포커스를 잃었을
+                            때</a></li>
+                    <li><a href="#sample02">02. 이벤트 메서드 : <strong>addEventListener("change")</strong> : 목록이나 체크 상태 등이
+                            변경되었을 때</a></li>
+                    <li><a href="#sample03">03. 이벤트 메서드 : <strong>addEventListener("focus")</strong> : 폼 요소에 포커스를 놓았을
+                            때</a></li>
+                    <li><a href="#sample04">04. 이벤트 메서드 : <strong>addEventListener("reset")</strong> : 폼이 리셋되었을 때</a>
+                    </li>
+                    <li><a href="#sample05">05. 이벤트 메서드 : <strong>addEventListener("submit")</strong> : 폼에 있는 버튼을 클릭했을
+                            때</a></li>
                 </ul>
                 <h3>마우스 드래그</h3>
                 <ul>
                     <li><a href="#sample01">01. 이벤트 메서드 : <strong>addEventListener("drag")</strong> : 드래그 중인 경우</a></li>
-                    <li><a href="#sample02">02. 이벤트 메서드 : <strong>addEventListener("dragstart")</strong> : 드래그를 시작 했을 때</a></li>
-                    <li><a href="#sample03">03. 이벤트 메서드 : <strong>addEventListener("dragend")</strong> : 드래그 끝났을 때</a></li>
-                    <li><a href="#sample04">04. 이벤트 메서드 : <strong>addEventListener("dragenter")</strong> : 요소의 위치에 드래그 했을 때</a></li>
-                    <li><a href="#sample05">05. 이벤트 메서드 : <strong>addEventListener("dragover")</strong> : 요소의 위치 위에 있을 때</a></li>
-                    <li><a href="#sample06">06. 이벤트 메서드 : <strong>addEventListener("dragleave")</strong> : 요소의 위치 위에서 벗어 났을 때</a></li>
-                    <li><a href="#sample07">07. 이벤트 메서드 : <strong>addEventListener("drop")</strong> : 요소의 위치에 드롭 했을 때</a></li>
+                    <li><a href="#sample02">02. 이벤트 메서드 : <strong>addEventListener("dragstart")</strong> : 드래그를 시작 했을
+                            때</a></li>
+                    <li><a href="#sample03">03. 이벤트 메서드 : <strong>addEventListener("dragend")</strong> : 드래그 끝났을 때</a>
+                    </li>
+                    <li><a href="#sample04">04. 이벤트 메서드 : <strong>addEventListener("dragenter")</strong> : 요소의 위치에 드래그
+                            했을 때</a></li>
+                    <li><a href="#sample05">05. 이벤트 메서드 : <strong>addEventListener("dragover")</strong> : 요소의 위치 위에 있을
+                            때</a></li>
+                    <li><a href="#sample06">06. 이벤트 메서드 : <strong>addEventListener("dragleave")</strong> : 요소의 위치 위에서 벗어
+                            났을 때</a></li>
+                    <li><a href="#sample07">07. 이벤트 메서드 : <strong>addEventListener("drop")</strong> : 요소의 위치에 드롭 했을
+                            때</a></li>
                 </ul>
                 <h3>키보드</h3>
                 <ul>
-                    <li><a href="#sample01">01. 이벤트 메서드 : <strong>addEventListener("keydown")</strong> : 키 눌렀을 때(한번만 실행)</a></li>
-                    <li><a href="#sample02">02. 이벤트 메서드 : <strong>addEventListener("keypress")</strong> : 키 눌렀을 때(누르고 있으면 계속 실행)</a></li>
-                    <li><a href="#sample03">03. 이벤트 메서드 : <strong>addEventListener("keyup")</strong> : 키 누르고 뗐을 때</a></li>
+                    <li><a href="#sample01">01. 이벤트 메서드 : <strong>addEventListener("keydown")</strong> : 키 눌렀을 때(한번만
+                            실행)</a></li>
+                    <li><a href="#sample02">02. 이벤트 메서드 : <strong>addEventListener("keypress")</strong> : 키 눌렀을 때(누르고
+                            있으면 계속 실행)</a></li>
+                    <li><a href="#sample03">03. 이벤트 메서드 : <strong>addEventListener("keyup")</strong> : 키 누르고 뗐을 때</a>
+                    </li>
                 </ul>
                 <h3>터치</h3>
                 <ul>
-                    <li><a href="#sample01">01. 이벤트 메서드 : <strong>addEventListener("touchstart")</strong> : 터치가 시작 됐을 때</a></li>
-                    <li><a href="#sample02">02. 이벤트 메서드 : <strong>addEventListener("touchmove")</strong> : 터치가 움직이고 있을 때</a></li>
-                    <li><a href="#sample03">03. 이벤트 메서드 : <strong>addEventListener("touchend")</strong> : 터치가 끝났을 때</a></li>
+                    <li><a href="#sample01">01. 이벤트 메서드 : <strong>addEventListener("touchstart")</strong> : 터치가 시작 됐을
+                            때</a></li>
+                    <li><a href="#sample02">02. 이벤트 메서드 : <strong>addEventListener("touchmove")</strong> : 터치가 움직이고 있을
+                            때</a></li>
+                    <li><a href="#sample03">03. 이벤트 메서드 : <strong>addEventListener("touchend")</strong> : 터치가 끝났을 때</a>
+                    </li>
                 </ul>
                 <h3>마우스 속성</h3>
                 <ul>
@@ -111,9 +143,46 @@
                     <li><a href="#sample02">02. 이벤트 메서드 : <strong>dispatchDefault()</strong> : 이벤트 작동 해지</a></li>
                 </ul>
             </div>
-            <!-- //main__menu --> 
-            <div class="main__sample"> 
+            <!-- //main__menu -->
+            <div class="main__sample">
+                <div id="sample01" class="sample">
+                    <h3>01.addEventListener("click")</h3>
+                    <p>
+                        "addEventListener"는 JavaScript에서 이벤트 처리를 관리하는 메서드 중 하나입니다. 이 메서드를 사용하여 HTML 문서의 요소에 이벤트 리스너를
+                        추가하고, 해당 요소에서 발생한 이벤트를 감지하고 처리할 수 있습니다. "click" 이벤트는 사용자가 요소를 클릭할 때 발생하며, 이를 감지하고자 할 때
+                        "addEventListener"를 사용할 수 있습니다.
+                    </p>
+                    <pre><code class="language-js"> {
+    // HTML에서 버튼 요소 가져오기
+    const button = document.getElementById("myButton");
+    
+    // 버튼에 "click" 이벤트 리스너 추가
+    button.addEventListener("click", function() {
+        // 이곳에 클릭 이벤트가 발생했을 때 실행할 코드를 작성합니다.
+        alert("버튼이 클릭되었습니다!");
+    });
+}
+</code></pre>
+                </div>
+                <!-- sample01 -->
 
+                <div id="sample05" class="sample">
+                    <h3>05.addEventListener("DOMContentLoaded")</h3>
+                    <p>
+                        "DOMContentLoaded" 이벤트는 HTML 문서가 완전히 로드되고 파싱되었을 때 발생하는 이벤트입니다. 이 이벤트는 HTML 문서의 모든 요소, 스타일 시트,
+                        이미지 및 하위 자원이 다운로드되었을 때, 그리고 DOM (문서 객체 모델)이 완전히 구축되었을 때 실행됩니다. 이것은 보통 스크립트가 문서를 조작하거나 초기화하는 데
+                        사용됩니다.
+                    </p>
+                    <pre><code class="language-js"> {
+    document.addEventListener("DOMContentLoaded", function() {
+        // 이곳에 실행하려는 코드를 작성합니다.
+        // 이 코드는 HTML 문서가 로드되고 파싱된 후 실행됩니다.
+        console.log("문서가 로드되었습니다!");
+    });
+}
+</code></pre>
+                </div>
+                <!-- sample05 -->
             </div>
             <!-- //main__sample -->
         </main>
@@ -137,4 +206,5 @@
     <script>
     </script>
 </body>
+
 </html>

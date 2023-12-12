@@ -17,7 +17,7 @@
 
     <main id="main" role="main">
         <section class="login__inner container">
-            <h2>로그인</h2>
+            <h2>로그인</h2> 
             <p>로그인을 하시면 게시글 및 댓글 작성이 가능합니다.</p>
             <div class="login__form btStyle bmStyle">
                 <form action="loginSave.php" name="loginSave" method="post">

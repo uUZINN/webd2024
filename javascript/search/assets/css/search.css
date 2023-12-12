@@ -1,0 +1,340 @@
+@import url('https://webfontworld.github.io/NanumSquareNeo/NanumSquareNeo.css');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+}
+ul, li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: #000;
+}
+body {
+    background-color: #fff;
+    color: #000;
+    font-family: 'NanumSquareNeo';
+}
+
+#header {
+    border-bottom: 1px solid #464646;
+    padding: 1rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#header h1 a {
+    font-weight: bold;
+    font-size: 30px;
+}
+#header nav ul {
+    display: flex;
+    list-style: none;
+}
+#header nav ul li {
+    margin-left: 7px;
+}
+#header nav ul li a {
+    border-radius: 50%;
+    border: 1px solid #000;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: 500;
+}
+#header nav ul li.active a {
+    background-color: #000;
+    color: #fff;
+}
+
+
+
+.search__wrap {
+    /* background: #d3e7ff36; */
+    /* border: 1px solid #000; */
+    background: #fff;
+    border-radius: 20px;
+    width: 70%;
+    margin: 0 auto 1rem;
+    padding: 2rem;
+    text-align: center;
+}
+.search__title h1 {
+    font-family: 'LotteriaDdag';
+    font-size: 50px;
+    margin: 10px 0 15px;
+}
+.search__select span {
+    padding: 7px 13px 10px;
+    border: 1px solid #000;
+    font-weight: bold;
+    cursor: pointer;
+}
+.search__select span:hover {
+    background: #000;
+    color: #fff;
+}
+
+
+.search__box label {
+    display: none;
+}
+
+.input__search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 4px solid transparent;
+    border-radius: 50px;
+    background-image: linear-gradient(-45deg,#7aa3f5 0,#c382da 30%,#f9ab4f 60%,#ffc540 100%);
+    background-origin: border-box;
+    background-clip: content-box;
+    display: inline-flex;
+    width: 40%;
+    
+}
+.input__search > div {
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    margin: 4px;
+    width: 100%;
+    padding: 4px 7px;
+}
+.search__box input {
+    width: 100%;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    padding: 13px 20px;
+    font-size: 18px;
+    font-family: 'NanumSquareNeo';
+}
+.search__btn {
+    padding: 0 10px;
+    font-size: 8px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+.search__box p {
+    margin-top: 10px;
+    line-height: 1.5;
+}
+.search__box p em {
+    text-decoration: underline;
+    text-underline-position: under;
+    font-style: normal;
+}
+.search__box__result {
+    margin: 20px 0;
+    padding: 20px 0;
+    /* border-top: 1px dotted #797979; */
+    /* border-bottom: 1px dotted #797979; */
+    background: #f2f7ff;
+}
+.search__info {
+    border-bottom: 1px solid #797979;
+    padding-bottom: 1rem;
+    margin-bottom: 2rem;
+}
+.search__info div {
+    text-align: right;
+    font-size: 13px;
+}
+
+.search__list {
+    text-align: left;
+    height: 50vh;
+    overflow: hidden;
+    overflow-y: auto;
+}
+.search__list ul li {
+    list-style: none;
+    line-height: 1.7;
+    font-size: 17px;
+}
+.search__list ul li.hide {
+    display: none;
+}
+.search__list ul li.show {
+    display: block;
+}
+.search__list ul li em {
+    font-style: normal;
+    float: right;
+    color: #003395;
+}
+.search__list span {
+    padding: 10px 20px;
+    border: 1px solid #797979;
+    border-radius: 50px;
+    display: inline-flex;
+    margin: 5px;
+    cursor: pointer;
+}
+.search__list span {
+    transition: font-weight 0.2s ease;
+}
+.search__list span:hover, .search__list span.active {
+    background-image: linear-gradient(40deg,#7aa3f5 0,#c382da 40%,#f9ab4f 90%,#ffc540 100%);
+    border: 1px solid #dfdfdf;
+    color: #fff;
+    font-weight: 500;
+}
+
+.search__star {
+    /* margin-bottom: 1.5rem; */
+}
+.search__star ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+.search__star li {
+    border: 1px solid #afafaf;
+    padding: 12px 17px;
+    border-radius: 50px;
+    cursor: pointer;
+    color: #797979;
+    margin: 5px;
+}
+.search__star li:hover,
+.search__star li.active {
+    background-image: linear-gradient(40deg,#7aa3f5 0,#c382da 40%,#f9ab4f 90%,#ffc540 100%);
+    border: 1px solid #ffffff;
+    color: #fff;
+}
+.search__star__list ul {
+    padding: 0 2rem;
+}
+.search__star__list ul li {
+    list-style: none;
+    line-height: 1.7;
+    font-size: 17px;
+    padding: 10px 17px;
+    background: #f7f9fd;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.search__star li::after {
+    content: attr(data-desc);
+}
+.search__star li em::after {
+    content: attr(data-star);
+}
+
+
+
+/* 아래의 모든 코드는 영역::코드로 사용 */
+.scroll::-webkit-scrollbar {
+    width: 10px;  /* 스크롤바의 너비 */
+}
+
+.scroll::-webkit-scrollbar-thumb {
+    height: 30%; /* 스크롤바의 길이 */
+    background: #bebebe; /* 스크롤바의 색상 */
+    
+    border-radius: 10px;
+}
+
+.scroll::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);  /*스크롤바 뒷 배경 색상*/
+    border-radius: 10px;
+}
+
+
+#footer {
+    padding: 2rem;
+    text-align: center;
+    border-top: 1px solid #1d1d1d;
+}
+
+@media (max-width: 1200px){
+    .input__search {
+        width: 50%;
+    }
+    .search__star ul {
+        width: 100%;
+    }
+}
+
+@media (max-width: 900px){
+    .search__title h1 {
+        font-size: 7vw;
+    }
+    .input__search {
+        width: 90%;
+    }
+    .search__info {
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+    .search__wrap {
+        width: 100%;
+    }
+    .search__star__list ul li {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 600px){
+    #header h1 a {
+        font-weight: bold;
+        font-size: 24px;
+    }
+    .search__title span {
+        font-size: 14px;
+    }
+    .search__wrap {
+        width: 90%;
+        margin: 1.5rem auto;
+        padding: 1rem;
+    }
+    .input__search {
+        width: 95%;
+        font-size: 15px;
+    }
+    .search__box input {
+        padding: 8px 14px;
+        font-size: 15px;
+    }
+    .search__info {
+        margin-bottom: 1rem;
+        margin-top: 1rem;
+    }
+    .search__info > div {
+        font-size: 13px;
+    }
+    #header {
+        padding: 1rem;
+    }
+    #header h1 {
+        font-size: 22px;
+    }
+    #header nav ul li a {
+        width: 26px;
+        height: 26px;
+        font-size: 12px;
+    }
+    #header nav ul li {
+        margin-left: 5px;
+    }
+    .search__list ul li {
+        font-size: 14px;
+    }
+    .search__star__list ul {
+        padding: 0;
+    }
+}

@@ -11,6 +11,25 @@
         body {
             height: 100vh;
         }
+        .modal__btn {
+            position: fixed;
+            right: 20px;
+            bottom: 2%;
+            width: 100px;
+            height: 100px;
+            line-height: 100px;
+            color: #fff;
+            border-radius: 50%;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 1px solid #fff;
+            padding: 0;
+        }
+        #main {
+            position: relative;
+            z-index: 9;
+        }
     </style>
 </head>
 <body class="fixed">
@@ -101,24 +120,7 @@
             <!-- //cbt__header -->
 
             <div class="cbt__conts">
-                <div class="cbt__quiz">
-                    <!-- <div class="cbt">
-                        <div class="cbt__question">1. GoF(Gang of Four)의 디자인 패턴에서 행위 패턴에 속하는 것은?</div>
-                        <div class="cbt__choices">
-                            <input type="radio" id="choice1">
-                            <label for="choice1"><span class="choice">Visitor</span></label>
-                            <input type="radio" id="choice2">
-                            <label for="choice1"><span class="choice">Builder</span></label>
-                            <input type="radio" id="choice3">
-                            <label for="choice1"><span class="choice">Prototype</span></label>
-                            <input type="radio" id="choice4">
-                            <label for="choice1"><span class="choice">Bridge</span></label>
-                        </div>
-                        <div class="cbt__desc">
-                            객체지향 구성 요소에는 클래스(Class), 객체(Object), 인스턴스(Instance), 메시지(Message), 메소드(Method) 등이 있다.
-                        </div>
-                    </div> -->
-                </div>
+                <div class="cbt__quiz"></div>
             </div>
             <!-- //cbt__conts -->
 
@@ -127,37 +129,192 @@
                 <div class="cbt__submit">답안지 제출하기</div>
                 <div class="cbt__giveup">포기하기</div>
                 <div class="cbt__again none">다시 풀기</div>
-                <div class="cbt__omr">
-                    <!-- <div class="omr">
-                        <strong>1</strong>
-                        <input type="radio" name="omr1" id="omr1">
-                        <label for="omr1">
-                            <span class="label-inner">1</span>
-                        </label>
-                        <input type="radio" name="omr2" id="omr2">
-                        <label for="omr2">
-                            <span class="label-inner">2</span>
-                        </label>
-                        <input type="radio" name="omr3" id="omr3">
-                        <label for="omr3">
-                            <span class="label-inner">3</span>
-                        </label>
-                        <input type="radio" name="omr4" id="omr4">
-                        <label for="omr4">
-                            <span class="label-inner">4</span>
-                        </label>
-                    </div> -->
-                </div>
+                <div class="cbt__omr"></div>
             </div>
             <!-- //cbt__aside -->
         </div>
     </main>
     <!-- //main -->
 
+
+    <footer id="footer">
+        <div class="modal__wrap">
+            <div class="modal__btn">소스 보기</div>
+            <div class="modal__cont">
+                <div class="modal__box">
+                    <div class="title">
+                        <span class="dot" aria-label="true"></span>
+                        <div class="tabs">
+                            <div class="active">
+                                <span class="favicon" aria-label="true">
+                                    <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true" focusable="false">
+                                        <circle cx="9" cy="9" r="9" fill="#fff"></circle>
+                                        <path d="M18 9C18 13.9706 15.4688 3.09375 9 10.125C2.53125 17.1562 0 13.9706 0 9C0 4.02944 4.02944 0 9 0C13.9706 0 18 4.02944 18 9Z" fill="orange"></path>
+                                        <path d="M18 9C18 13.9706 14.9062 0.84375 8.29688 6.1875C1.6875 11.5312 0 13.9706 0 9C0 4.02944 4.02944 0 9 0C13.9706 0 18 4.02944 18 9Z" fill="yellow"></path>
+                                    </svg>
+                                </span>
+                                <em>Javascript</em>
+                                <span class="close">
+                                    <svg width="18" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M12.5 3.5L3.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M12.5 12.5L3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                            <div>
+                                <span class="favicon" aria-label="true">
+                                    <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true" focusable="false">
+                                        <circle cx="9" cy="9" r="9" fill="#fff"></circle>
+                                        <path d="M18 9C18 13.9706 15.4688 3.09375 9 10.125C2.53125 17.1562 0 13.9706 0 9C0 4.02944 4.02944 0 9 0C13.9706 0 18 4.02944 18 9Z" fill="orange"></path>
+                                        <path d="M18 9C18 13.9706 14.9062 0.84375 8.29688 6.1875C1.6875 11.5312 0 13.9706 0 9C0 4.02944 4.02944 0 9 0C13.9706 0 18 4.02944 18 9Z" fill="yellow"></path>
+                                    </svg>
+                                </span>
+                                <em>HTML</em>
+                                <span class="close">
+                                    <svg width="18" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+                                        <path d="M12.5 3.5L3.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                        <path d="M12.5 12.5L3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                                    </svg>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cont">
+                        <div class="active">
+<pre><code class="language-js">// 선택자
+const quizWrap = document.querySelector(".quiz__wrap");
+const quizCheck = document.querySelector(".quiz__check");
+
+// 변수 설정
+let currentIndex = 0;   // 현재 문제
+let quizInfo = [];      // 모든 퀴즈 정보
+
+// 문제 가져오기
+const fetchQuiz = () => {
+    fetch("https://uuzinn.github.io/webs2024/json/gineungsaJC2011_05.json")
+    .then(res => res.json())
+    .then(items => {
+        quizInfo = items.map((item, index) => {
+            const formattedQuiz = {
+                infoDate: "2011년 5회",
+                infoType: item.subject,
+                infoQuestion: item.question,
+                infoDesc: item.desc,
+                infoAnswer: item.correct_answer
+            }
+
+            // 보기 가져오기
+            const choices = [...item.incorrect_answers, item.correct_answer];
+
+            // 보기 랜덤 섞기
+            for (let i = choices.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [choices[i], choices[j]] = [choices[j], choices[i]];
+            }
+
+            formattedQuiz.infoChoice = choices;
+            return formattedQuiz;
+        });
+    
+        console.log(quizInfo);
+        updataQuiz();
+    })
+}
+
+
+// 문제 출력
+const updataQuiz = () => {
+    const quizArray = [];
+
+    quizInfo.forEach((quiz, number) => {
+        quizArray.push(`
+            &lt;div class="quiz"&gt;
+                &lt;div class="quiz__header">${quiz.infoDate} ${quiz.infoType}&lt;/div&gt;
+                &lt;div class="quiz__main"&gt;
+                    &lt;div class="quiz__question">${number+1}. ${quiz.infoQuestion}&lt;/div&gt;
+                    &lt;div class="quiz__choice"&gt;
+                        &lt;label for="choice1-${number}"&gt;
+                            &lt;input type="radio" id="choice1-${number}" name="choice-${number}" value="1"&gt;
+                            &lt;span>${quiz.infoChoice[0]}&lt;/span&gt;
+                        &lt;/label&gt;
+                        &lt;label for="choice2-${number}"&gt;
+                            &lt;input type="radio" id="choice2-${number}" name="choice-${number}" value="2"&gt;
+                            &lt;span>${quiz.infoChoice[1]}&lt;/span&gt;
+                        &lt;/label&gt;
+                        &lt;label for="choice3-${number}"&gt;
+                            &lt;input type="radio" id="choice3-${number}" name="choice-${number}" value="3"&gt;
+                            &lt;span>${quiz.infoChoice[2]}&lt;/span&gt;
+                        &lt;/label&gt;
+                        &lt;label for="choice4-${number}"&gt;
+                            &lt;input type="radio" id="choice4-${number}" name="choice-${number}" value="4"&gt;
+                            &lt;span>${quiz.infoChoice[3]}&lt;/span&gt;
+                        &lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class="quiz__answer none">${quiz.infoAnswer}&lt;/div&gt;
+                    &lt;div class="quiz__desc none">${quiz.infoDesc}&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        `);
+    })
+
+    quizWrap.innerHTML = quizArray.join("");
+}
+
+
+// 정답 확인
+quizCheck.addEventListener("click", () => {
+    const selectedChoice = quizWrap.querySelector("input[name='choice-${number}']:checked");
+    const userAnswer = selectedChoice.value;
+    const correctAnswer = quizInfo[currentIndex].infoAnswer;
+    const quizElement = quizWrap.querySelector(".quiz");
+    const descElement = quizWrap.querySelector(".quiz__desc");
+    const answerElement = quizWrap.querySelector(".quiz__answer");
+
+    if(userAnswer === correctAnswer){
+        if (!selectedChoice) {
+            quizElement.classList.add("bad");
+            answerElement.classList.remove("none");
+        }
+        quizElement.classList.add("good");
+    } else {
+        quizElement.classList.add("bad");
+        answerElement.classList.remove("none");
+    }
+    descElement.classList.remove("none");
+
+});
+
+
+// 페이지가 로드된 후 실행
+document.addEventListener("DOMContentLoaded", () => {
+    fetchQuiz();
+});
+</code></pre>
+                        </div>
+                        <div>
+<pre><code class="language-html">&lt;main id="main"&gt;
+    &lt;div class="quiz__wrap">&lt;/div&gt;
+    &lt;div class="quiz__check">정답 확인&lt;/div&gt;
+&lt;/main&gt;
+<!-- //main -->
+</code></pre>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal__close">
+                    <svg width="18" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true" focusable="false">
+                        <path d="M12.5 3.5L3.5 12.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M12.5 12.5L3.5 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- //footer -->
  
 
     <script src="../../assets/js/highlight.min.js"></script>
-    <!-- <script src="assets/js/common.js"></script> -->
+    <script src="assets/js/common.js"></script>
     <script>
         // 선택자
         const cbtWrap = document.querySelector(".cbt__wrap");
@@ -175,7 +332,6 @@
         const cbtSubmit = document.querySelector(".cbt__submit");
         const cbtGiveup = document.querySelector(".cbt__giveup");
         const cbtAgain = document.querySelector(".cbt__again");
-        
 
         // 문제 정보
         let quizInfo = [];          //모든 퀴즈 정보
@@ -418,6 +574,7 @@
                     cbtName.innerHTML = playerName;
                     startTimer();
                 }
+
             });
 
             // 정답 제출하기 버튼 클릭

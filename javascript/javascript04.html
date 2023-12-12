@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>데이터 제어하기</title>
-    <link rel="stylesheet" href="https://webfontworld.github.io/gmarket/GmarketSans.css" >
+    <link rel="stylesheet" href="https://webfontworld.github.io/gmarket/GmarketSans.css">
     <link rel="stylesheet" href="https://websfont.github.io/nanumSquareNeo/nanumSquareNeo.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="../assets/css/default.min.css">
 </head>
+
 <body>
     <div id="wrap">
         <header id="header">
@@ -33,7 +35,7 @@
                 <ul>
                     <li><a href="javascript11.html">데이터 효과</a></li>
                     <li><a href="javascript12.html">퀴즈 효과</a></li>
-                    <li><a href="javascript13.html">마우스 효과</a></li>
+                    <li><a href="javascript13.html">GSAP 효과</a></li>
                     <li><a href="javascript14.html">슬라이드 효과</a></li>
                 </ul>
             </nav>
@@ -61,9 +63,10 @@
                 <div id="sample01" class="sample">
                     <h3>01. if문</h3>
                     <p>
-                        if문은 주어진 조건식이 참(또는 true)인 경우에만 특정 코드 블록을 실행하고, 조건식이 거짓(또는 false)인 경우에는 해당 코드 블록을 건너뛰게 됩니다. if문은 프로그램의 흐름을 제어하고 다양한 상황에 대한 로직을 구현하는 데 사용됩니다.
+                        if문은 주어진 조건식이 참(또는 true)인 경우에만 특정 코드 블록을 실행하고, 조건식이 거짓(또는 false)인 경우에는 해당 코드 블록을 건너뛰게 됩니다. if문은
+                        프로그램의 흐름을 제어하고 다양한 상황에 대한 로직을 구현하는 데 사용됩니다.
                     </p>
-<pre><code class="language-js">{
+                    <pre><code class="language-js">{
     // true : true, "문자열", 1, 2, "1", "2", [], {}
     // false : false, 0, null, undefined, ""(빈문자열)
 
@@ -75,25 +78,26 @@
 }
 </code></pre>
                     <p class="desc">
-                        조건식: 평가할 조건을 나타내는 표현식입니다. 조건식은 참 또는 거짓을 반환하는 표현식이어야 합니다. 예를 들어, 비교 연산자(==, !=, >, <, >=, <=)를 사용하여 값을 비교하거나 논리 연산자(&&, ||, !)를 사용하여 여러 조건을 조합할 수 있습니다.
-                    </p>
-                    <div class="result">
-                        <details>
-                            <summary>결과 확인하기</summary>
-                            <div>
-                                실행되었습니다.(true)
-                            </div>
-                        </details>
-                    </div>
+                        조건식: 평가할 조건을 나타내는 표현식입니다. 조건식은 참 또는 거짓을 반환하는 표현식이어야 합니다. 예를 들어, 비교 연산자(==, !=, >, <,>=, <=)를
+                                사용하여 값을 비교하거나 논리 연산자(&&, ||, !)를 사용하여 여러 조건을 조합할 수 있습니다. </p>
+                                <div class="result">
+                                    <details>
+                                        <summary>결과 확인하기</summary>
+                                        <div>
+                                            실행되었습니다.(true)
+                                        </div>
+                                    </details>
+                                </div>
                 </div>
                 <!-- //sample01 -->
 
                 <div id="sample02" class="sample">
                     <h3>02. 다중 if문</h3>
                     <p>
-                        다중 if문은 여러 개의 조건을 순차적으로 검사하고, 조건에 해당하는 첫 번째 블록을 실행하는 제어 구조입니다. 이것은 서로 다른 조건에 따라 다른 동작을 수행해야 할 때 유용합니다. 또한 다중 if문은 else if 블록과 마지막으로 실행될 else 블록과 함께 사용하여 여러 조건을 처리할 수 있습니다.
+                        다중 if문은 여러 개의 조건을 순차적으로 검사하고, 조건에 해당하는 첫 번째 블록을 실행하는 제어 구조입니다. 이것은 서로 다른 조건에 따라 다른 동작을 수행해야 할 때
+                        유용합니다. 또한 다중 if문은 else if 블록과 마지막으로 실행될 else 블록과 함께 사용하여 여러 조건을 처리할 수 있습니다.
                     </p>
-<pre><code class="language-js">{
+                    <pre><code class="language-js">{
     const num = 100;
 
     if(num == 90){
@@ -126,9 +130,10 @@
                 <div id="sample03" class="sample">
                     <h3>03. 중첩 if문</h3>
                     <p>
-                        중첩 if문은 하나의 if문 내에 다른 if문을 포함하는 제어 구조입니다. 이것은 조건을 계층적으로 검사하고 여러 레벨의 조건을 처리해야 할 때 사용됩니다. 중첩 if문은 코드 블록 내에 또 다른 if문을 작성하여 복잡한 조건 로직을 구현하는 데 도움이 됩니다.
+                        중첩 if문은 하나의 if문 내에 다른 if문을 포함하는 제어 구조입니다. 이것은 조건을 계층적으로 검사하고 여러 레벨의 조건을 처리해야 할 때 사용됩니다. 중첩 if문은
+                        코드 블록 내에 또 다른 if문을 작성하여 복잡한 조건 로직을 구현하는 데 도움이 됩니다.
                     </p>
-<pre><code class="language-js">{
+                    <pre><code class="language-js">{
     const num = 100;
 
     if(num == 100){
@@ -145,7 +150,8 @@
 }
 </code></pre>
                     <p class="desc">
-                        중첩 if문은 여러 수준의 조건을 다룰 때 유용합니다. 내부 if문은 외부 if문의 조건이 참인 경우에만 검사되므로, 두 번째 조건은 첫 번째 조건이 충족되는 경우에만 고려됩니다.
+                        중첩 if문은 여러 수준의 조건을 다룰 때 유용합니다. 내부 if문은 외부 if문의 조건이 참인 경우에만 검사되므로, 두 번째 조건은 첫 번째 조건이 충족되는 경우에만
+                        고려됩니다.
                     </p>
                     <div class="result">
                         <details>
@@ -165,7 +171,7 @@
                     <p>
                         삼항 연산자는 조건에 따라 값을 반환하는 간결한 표현식입니다. 이 연산자는 if-else문을 간단하게 표현하는 데 사용됩니다. 삼항 연산자는 다음과 같은 구조를 가집니다:
                     </p>
-<pre><code class="language-js">{
+                    <pre><code class="language-js">{
     const num = 100;
 
     // if(num == 100){
@@ -210,9 +216,10 @@
                 <div id="sample05" class="sample">
                     <h3>05. switch문</h3>
                     <p>
-                        switch문은 JavaScript에서 조건에 따라 다른 동작을 수행하는 데 사용되는 제어 구조입니다. switch문은 주로 특정 변수나 표현식의 값을 기준으로 여러 가지 경우(case)를 비교하고, 해당하는 경우에 실행할 코드 블록을 지정합니다.
+                        switch문은 JavaScript에서 조건에 따라 다른 동작을 수행하는 데 사용되는 제어 구조입니다. switch문은 주로 특정 변수나 표현식의 값을 기준으로 여러 가지
+                        경우(case)를 비교하고, 해당하는 경우에 실행할 코드 블록을 지정합니다.
                     </p>
-<pre><code class="language-js">{
+                    <pre><code class="language-js">{
     const num = 100;
 
     switch(num){
@@ -235,7 +242,8 @@
 </code></pre>
                     <p class="desc">
                         표현식: switch문에서 비교할 값이나 표현식을 나타냅니다.
-                        case 값1: 비교할 값1과 일치하는 경우, 해당 case 블록 내의 코드가 실행됩니다. break문을 사용하여 case 블록을 종료하고 다음 case로 넘어갈 수 있습니다. break문을 생략하면 해당 case 블록 이후의 모든 코드가 순차적으로 실행됩니다.
+                        case 값1: 비교할 값1과 일치하는 경우, 해당 case 블록 내의 코드가 실행됩니다. break문을 사용하여 case 블록을 종료하고 다음 case로 넘어갈 수
+                        있습니다. break문을 생략하면 해당 case 블록 이후의 모든 코드가 순차적으로 실행됩니다.
                         default: 어떤 case에도 일치하지 않는 경우, default 블록 내의 코드가 실행됩니다. default 블록은 선택적이며 생략할 수 있습니다.
                     </p>
                     <div class="result">
@@ -252,9 +260,10 @@
                 <div id="sample06" class="sample">
                     <h3>06. while문</h3>
                     <p>
-                        while문은 프로그래밍에서 반복 실행할 코드 블록을 지정하는 데 사용되는 제어 구조입니다. while문은 주어진 조건이 참일 동안 반복적으로 코드를 실행하며, 조건이 거짓이 되면 반복을 중지합니다. 이는 반복 작업이 필요한 경우, 조건이 충족될 때까지 작업을 반복하고자 할 때 유용합니다.
+                        while문은 프로그래밍에서 반복 실행할 코드 블록을 지정하는 데 사용되는 제어 구조입니다. while문은 주어진 조건이 참일 동안 반복적으로 코드를 실행하며, 조건이
+                        거짓이 되면 반복을 중지합니다. 이는 반복 작업이 필요한 경우, 조건이 충족될 때까지 작업을 반복하고자 할 때 유용합니다.
                     </p>
-<pre><code class="language-js">{
+                    <pre><code class="language-js">{
     // 1-10까지 출력하는 for()
     for(let i=1; i<=10; i++){
         document.write(i);
@@ -288,9 +297,10 @@
                 <div id="sample07" class="sample">
                     <h3>07. do while문</h3>
                     <p>
-                        do...while문은 프로그래밍에서 반복 실행할 코드 블록을 지정하는 데 사용되는 제어 구조로, 코드 블록을 최소한 한 번 실행한 다음 조건을 평가하여 조건이 참인 경우에 반복을 계속합니다. do...while문은 while문과 유사하지만, while문과는 달리 조건 평가가 반복 실행 이전에 이루어집니다.
+                        do...while문은 프로그래밍에서 반복 실행할 코드 블록을 지정하는 데 사용되는 제어 구조로, 코드 블록을 최소한 한 번 실행한 다음 조건을 평가하여 조건이 참인 경우에
+                        반복을 계속합니다. do...while문은 while문과 유사하지만, while문과는 달리 조건 평가가 반복 실행 이전에 이루어집니다.
                     </p>
-<pre><code class="language-js">{
+                    <pre><code class="language-js">{
     let num = 1;
     do {
         document.write(num);
@@ -318,9 +328,10 @@
                 <div id="sample08" class="sample">
                     <h3>08. for문</h3>
                     <p>
-                        for문은 프로그래밍에서 반복 작업을 수행할 때 가장 자주 사용되는 제어 구조 중 하나입니다. for문은 초기화, 조건, 반복 후 작업을 정의하여 반복적으로 코드 블록을 실행합니다. 이는 반복 횟수가 정해진 경우나 배열과 같은 순서가 있는 데이터를 순회하고자 할 때 유용합니다.
+                        for문은 프로그래밍에서 반복 작업을 수행할 때 가장 자주 사용되는 제어 구조 중 하나입니다. for문은 초기화, 조건, 반복 후 작업을 정의하여 반복적으로 코드 블록을
+                        실행합니다. 이는 반복 횟수가 정해진 경우나 배열과 같은 순서가 있는 데이터를 순회하고자 할 때 유용합니다.
                     </p>
-<pre><code class="language-js">{
+                    <pre><code class="language-js">{
     for(let i=1; i<=10; i++){
         document.write(i);
     }
@@ -347,9 +358,10 @@
                 <div id="sample09" class="sample">
                     <h3>09. break문</h3>
                     <p>
-                        break문은 주로 반복문(for, while, do...while) 내에서 사용되며, 특정 조건이 충족되면 반복문을 즉시 종료하는 데 사용됩니다. break문을 만나면 가장 가까운 반복문의 실행을 중지하고 반복문을 빠져나오게 됩니다.
+                        break문은 주로 반복문(for, while, do...while) 내에서 사용되며, 특정 조건이 충족되면 반복문을 즉시 종료하는 데 사용됩니다. break문을 만나면
+                        가장 가까운 반복문의 실행을 중지하고 반복문을 빠져나오게 됩니다.
                     </p>
-<pre><code class="language-js">{
+                    <pre><code class="language-js">{
     // 1부터 50까지 짝수만
     for(let i=1; i&lt;10; i++){
         if(i == 5){
@@ -360,7 +372,8 @@
 }
 </code></pre>
                     <p class="desc">
-                        break문은 조건이 충족되면 가장 가까운 반복문만 탈출하므로 중첩된 반복문에서 사용할 경우 주의가 필요합니다. 원하는 반복문을 종료하려면 해당 반복문의 레이블(label)을 사용하여 break문을 사용할 수 있습니다.
+                        break문은 조건이 충족되면 가장 가까운 반복문만 탈출하므로 중첩된 반복문에서 사용할 경우 주의가 필요합니다. 원하는 반복문을 종료하려면 해당 반복문의
+                        레이블(label)을 사용하여 break문을 사용할 수 있습니다.
                     </p>
                     <div class="result">
                         <details>
@@ -376,9 +389,10 @@
                 <div id="sample10" class="sample">
                     <h3>10. continue문</h3>
                     <p>
-                        continue문은 주로 반복문 (for, while, do...while) 내에서 사용되며, 특정 조건이 충족되었을 때 현재 반복을 종료하고 다음 반복을 시작하는 데 사용됩니다. 즉, continue문을 만나면 반복문 내의 남은 코드를 실행하지 않고 다음 반복 단계로 건너뛰게 됩니다.
+                        continue문은 주로 반복문 (for, while, do...while) 내에서 사용되며, 특정 조건이 충족되었을 때 현재 반복을 종료하고 다음 반복을 시작하는 데
+                        사용됩니다. 즉, continue문을 만나면 반복문 내의 남은 코드를 실행하지 않고 다음 반복 단계로 건너뛰게 됩니다.
                     </p>
-<pre><code class="language-js">{
+                    <pre><code class="language-js">{
     // 1부터 50까지 짝수만
     for(let i=1; i&lt;10; i++){
         if(i == 5){
@@ -534,7 +548,7 @@
         //     } while(num<=10);
         // }
 
-        // // 08. for문 
+        // // 08. for문
         // {
         //     for(let i=1; i<=10; i++){
         //         document.write(i);
@@ -565,4 +579,5 @@
         // }
     </script>
 </body>
+
 </html>

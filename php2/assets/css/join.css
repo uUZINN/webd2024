@@ -17,6 +17,187 @@
     margin-bottom: 5px;
 }
 
+
+
+/* 이용약관 */
+.join__index {
+    text-align: center;
+    margin-top: 20px;
+}
+.join__index ul {
+    position: relative;
+    display: inline-block;
+}
+.join__index ul::after {
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: var(--black);
+    position: absolute;
+    left: 0;
+    top: 50%;
+    z-index: -1;
+}
+.join__index li {
+    display: inline-block;
+    width: 36px;
+    height: 36px;
+    line-height: 33px;
+    border-radius: 50%;
+    border: 2px solid var(--black);
+    font-family: var(--main-gmark);
+    font-size: 18px;
+    background-color: var(--primary-color);
+}
+.join__index li:nth-child(2){
+    margin: 0 30px;
+}
+.join__index li.active {
+    color: var(--white);
+    background-color: var(--black);
+}
+
+
+.agree__box .scroll {
+    background: #f1f1f1;
+    padding: 1.5rem 2rem;
+    height: 250px;
+    overflow-y: scroll;
+}
+.agree__box .scroll .scroll__cont {
+    white-space: pre-line;
+    line-height: 1.7;
+}
+.agree__box {
+    margin-top: 3rem;
+}
+.agree__box .check__agree {
+    margin-top: 1rem;
+}
+.agree__box .check__agree label span {
+    padding-left: 5px;
+}
+.check__agree { 
+    display: block;
+    position: relative; 
+    padding-left: 25px; 
+    margin-bottom: 10px; 
+    cursor: pointer; 
+    font-size: 14px; 
+    -webkit-user-select: none; 
+    -moz-user-select: none; 
+    -ms-user-select: none; 
+    user-select: none; 
+}
+
+/* 기본 체크박스 숨기기 */
+.check__agree input[type="checkbox"] { display: none; }
+
+/* 선택되지 않은 체크박스 스타일 꾸미기 */
+.on { 
+    width: 20px;
+    height: 20px;
+    background: #f7f7f7;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 1px solid #ddd;
+}
+
+/* 선택된 체크박스 스타일 꾸미기 */
+.check__agree input[type="checkbox"]:checked + .on { background: #1f1f1f; border: none}
+.on:after { content: ""; position: absolute; display: none; }
+.check__agree input[type="checkbox"]:checked + .on:after { display: block; }
+.on:after { 
+    width: 6px; 
+    height: 10px; 
+    border: solid #fff; 
+    border-width: 0 2px 2px 0; 
+    -webkit-transform: rotate(45deg); 
+    -ms-transform: rotate(45deg); 
+    transform: rotate(45deg); 
+    position: absolute; 
+    left: 7px;
+    top: 3px;
+}
+
+.join__agree {
+    max-width: 80%;
+    margin: 0 auto;
+}
+.join__agree .agree__btn {
+    text-align: center;
+}
+.join__agree .agree__btn button {
+    text-align: center;
+    margin-top: 3rem;
+    background-color: var(--black);
+    color: var(--white);
+    display: inline-block;
+    width: 20%;
+    border-radius: 50px;
+    padding: 14px 0;
+    font-size: 1.1rem;
+}
+  
+
+
+/* 회원가입 */
+.check .confirm__input {
+    margin: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.check .confirm__input input {
+    width: 70%;
+    margin: 0;
+}
+.check .confirm__input > div {
+    background: var(--black);
+    color: var(--white);
+    width: 28%;
+    font-size: 1rem;
+    border-radius: 5px;
+    height: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0.9rem 0;
+    cursor: pointer;
+}
+.check p {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
+.confirm__adress input {
+    margin-top: 13px;
+}
+
+
+/* 회원가입 완료 */
+.join__result {
+    text-align: center;
+}
+.join__result p {
+    font-size: 22px;
+    text-align: center;
+    margin-top: 3rem;
+}
+.result__btn {
+    text-align: center;
+    margin-top: 3rem;
+    background-color: var(--black);
+    color: var(--white);
+    display: inline-block;
+    width: 20%;
+    border-radius: 50px;
+    padding: 14px 0;
+    font-size: 1.1rem;
+}
+
+
 @media (max-width: 800px){
     .join__form {
         padding: 5% 20px;
